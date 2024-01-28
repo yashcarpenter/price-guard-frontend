@@ -28,7 +28,7 @@ function WelcomePage() {
       </div>
       <div style={{display:'flex', justifyContent:"center"}}>
         <nav class="nav flex-column">
-          <a class="nav-link active" aria-current="page" href="#">Active</a>
+          <a class="nav-link active" aria-current="page" href="#">Add Product</a>
           <a class="nav-link" href="#">Link</a>
           <a class="nav-link" href="#">Link</a>
           <a class="nav-link disabled" aria-disabled="true">Disabled</a>
