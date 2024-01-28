@@ -1,6 +1,5 @@
 import React from 'react'
-import Image1 from '../Images/1686189916776.jpg'
-import Image2 from '../Images/1686165208678.jpg'
+import Image1 from '../Images/1686120644653.jpg'
 
 function Carousel_Images() {
   return (

@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
-import Home from './components/home';
+import AddProduct from './components/addProduct';
 import WelcomePage from "./components/WelcomePage";
 import reportWebVitals from './reportWebVitals';
 import {
@@ -12,7 +12,7 @@ import {
   Link,
 } from "react-router-dom";
 import AboutUs from './components/aboutCreator';
-import Text from './components/text'
+import RemoveProduct from './components/removeProduct';
 
 const router = createBrowserRouter([
   {
@@ -24,13 +24,16 @@ const router = createBrowserRouter([
         element: <AboutUs />,
       },
       {
-        path: "/home",
-        element: <Home />,
+        path: "/addproduct",
+        element: <AddProduct />,
       },
       {
         path: "",
         element: <WelcomePage />,
-      },
+      },{
+        path: "/removeproduct",
+        element: <RemoveProduct/>,
+      }
     ],
   },
 ]);

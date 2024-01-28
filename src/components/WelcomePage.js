@@ -9,49 +9,48 @@ function WelcomePage() {
         display: "grid",
         alignItems: "center",
         justifyContent: "center",
-        height: "100vh",
+        height: "100vh"
       }}
     >
-      <h1
+      <div
         style={{
-          display: "flex",
+          display: "grid",
+          width: "70vw",
           alignItems: "center",
           justifyContent: "center",
+          height: "10vh",
         }}
       >
-        Welcome to Price Guard
-      </h1>
-      <p style={{ width: "80vw", display: "flex", justifyContent: "center" }}>
-        Discover a smarter way to shop online with Price Guard. We're here to
-        make your online shopping experience more rewarding.
-      </p>
-      <p style={{ width: "70vw" }}>
-        Welcome to Price Guard Discover a smarter way to shop online with Price
-        Guard. We're here to make your online shopping experience more
-        rewarding. About Us At Price Guard, our mission is simple: to help you
-        save money on your favorite products. We believe that everyone deserves
-        the best deals, and our platform is designed to make that happen. What
-        We Offer Price Monitoring: Keep track of your favorite products and
-        receive instant notifications when prices drop. Simplified Shopping: Say
-        goodbye to endless searches. We make it easy to find the best prices on
-        the items you love. Get Started Ready to save? Join us today by signing
-        up for your Price Guard account. It's quick, easy, and the first step
-        towards a more budget-friendly shopping experience.
+        <h1 style={{display:'flex', justifyContent:"center"}}>Welcome to Price Guard</h1>
+        <p>
+        Discover a smarter way to shop online with Price Guard. We're here to make your online shopping experience more rewarding.
+        </p>
+      </div>
+      <div style={{display:'flex', justifyContent:"center"}}>
+        <nav class="nav flex-column">
+          <a class="nav-link active" aria-current="page" href="#">Active</a>
+          <a class="nav-link" href="#">Link</a>
+          <a class="nav-link" href="#">Link</a>
+          <a class="nav-link disabled" aria-disabled="true">Disabled</a>
+        </nav>
+      </div>
+      <div style={{display:'grid', alignItems:'center', justifyContent:'center', width:'70vw'}}>
+        <p>
+          Welcome to Price Guard Discover a smarter way to shop online with Price
+          Guard. We're here to make your online shopping experience more
+          rewarding. About Us At Price Guard, our mission is simple: to help you
+          save money on your favorite products. We believe that everyone deserves
+          the best deals, and our platform is designed to make that happen. What
+          We Offer Price Monitoring: Keep track of your favorite products and
+          receive instant notifications when prices drop. Simplified Shopping: Say
+          goodbye to endless searches. We make it easy to find the best prices on
+          the items you love. Get Started Ready to save? Join us today by signing
+          up for your Price Guard account. It's quick, easy, and the first step
+          towards a more budget-friendly shopping experience.
+        </p>
         <br></br>
-        <Link to="/home">
-          <h4
-            style={{
-              display: "grid",
-              alignItems: "center",
-              justifyContent: "center",
-            }}
-          >
-            Home
-          </h4>
-        </Link>
-        <br></br>
-        Thank you for choosing Price Guard. Happy shopping!
-      </p>
+        <h5 style={{display:'grid', alignItems:'center', justifyContent:'center', margin:'50px'}}>Thank you for choosing Price Guard. Happy shopping!</h5>
+      </div>
     </div>
   );
 }
