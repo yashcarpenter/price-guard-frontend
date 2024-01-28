@@ -26,13 +26,13 @@ function WelcomePage() {
         Discover a smarter way to shop online with Price Guard. We're here to make your online shopping experience more rewarding.
         </p>
       </div>
-      <div style={{display:'flex', justifyContent:"center"}}>
-        <nav class="nav flex-column">
-          <a class="nav-link active" aria-current="page" href="#">Add Product</a>
-          <a class="nav-link" href="#">Link</a>
-          <a class="nav-link" href="#">Link</a>
-          <a class="nav-link disabled" aria-disabled="true">Disabled</a>
-        </nav>
+      <div style={{display:'grid', justifyContent:"center", alignContent:'center'}}>
+      <Link to="/addproduct">
+        <button style={{margin:'5px'}}>Add Product</button>
+      </Link>
+      <Link to="/removeproduct">
+        <button style={{margin:'5px'}}>Remove Product</button>
+      </Link>
       </div>
       <div style={{display:'grid', alignItems:'center', justifyContent:'center', width:'70vw'}}>
         <p>
