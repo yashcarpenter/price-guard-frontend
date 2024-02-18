@@ -1,28 +1,58 @@
 import React, { useState } from 'react';
 import './CSS/AddProduct.css';
 
-const AddProduct = ({ onSubmit }) => {
+const AddProduct = ({ onSubmit = () => {} }) => {
   const [productName, setProductName] = useState('');
   const [productURL, setProductURL] = useState('');
-  const [desiredPrice, setDesiredPrice] = useState('');
+  const [limitPrice, setLimitPrice] = useState('');
+  const [userEmail, setUserEmail] = useState('');
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // Validate the form fields if needed
-    // Call the onSubmit prop with the form data
-    onSubmit({
+
+    const productData = {
+      url: productURL,
       productName,
-      productURL,
-      desiredPrice: parseFloat(desiredPrice), // Convert to a number if necessary
-    });
-    // Reset the form fields after submission
-    setProductName('');
-    setProductURL('');
-    setDesiredPrice('');
+      userEmail,
+      limitPrice: parseFloat(limitPrice)
+    };
+
+    try {
+      // Make the API call
+      const response = await fetch('http://localhost:8081/api/product/add', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(productData),
+      });
+
+      // Check if the request was successful
+      if (response.ok) {
+        // Call the onSubmit prop with the form data
+        if (typeof onSubmit === 'function') {
+          onSubmit(productData);
+        } else {
+          console.error('onSubmit is not a function');
+        }
+
+        // Reset the form fields after successful submission
+        setProductName('');
+        setProductURL('');
+        setLimitPrice('');
+        setUserEmail('');
+      } else {
+        console.error('Failed to add product. HTTP status:', response.status);
+      }
+    } catch (error) {
+      console.error('Error while adding product:', error);
+    }
   };
 
+  console.log('Received onSubmit prop:', onSubmit);
+
   return (
-    <div style={{height:'100vh'}}>
+    <div style={{ height: '100vh' }}>
       <h2>Add a New Product</h2>
       <form onSubmit={handleSubmit}>
         <label>
@@ -38,7 +68,7 @@ const AddProduct = ({ onSubmit }) => {
         <label>
           Product URL:
           <input
-            type="url"
+            type="text"
             value={productURL}
             onChange={(e) => setProductURL(e.target.value)}
             required
@@ -46,11 +76,21 @@ const AddProduct = ({ onSubmit }) => {
         </label>
         <br />
         <label>
-          Desired Price:
+          Limit Price:
           <input
             type="number"
-            value={desiredPrice}
-            onChange={(e) => setDesiredPrice(e.target.value)}
+            value={limitPrice}
+            onChange={(e) => setLimitPrice(e.target.value)}
+            required
+          />
+        </label>
+        <br />
+        <label>
+          User Email:
+          <input
+            type="email"
+            value={userEmail}
+            onChange={(e) => setUserEmail(e.target.value)}
             required
           />
         </label>
@@ -60,6 +100,5 @@ const AddProduct = ({ onSubmit }) => {
     </div>
   );
 };
-
 
 export default AddProduct;

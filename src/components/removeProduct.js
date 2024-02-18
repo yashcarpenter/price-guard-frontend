@@ -1,52 +1,44 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 const RemoveProduct = () => {
-  const [products, setProducts] = useState([
-    { id: 1, productName: 'Product A' },
-    { id: 2, productName: 'Product B' },
-    { id: 3, productName: 'Product C' },
-  ]);
+  const [products, setProducts] = useState([]);
 
-  const [selectedProductIds, setSelectedProductIds] = useState([]);
-
-  const handleCheckboxChange = (productId) => {
-    setSelectedProductIds((prevSelectedIds) => {
-      if (prevSelectedIds.includes(productId)) {
-        return prevSelectedIds.filter((id) => id !== productId);
-      } else {
-        return [...prevSelectedIds, productId];
-      }
-    });
-  };
-
-  const handleRemoveProducts = () => {
-    // Implement your logic for removing selected products here
-    console.log('Removing products with IDs:', selectedProductIds);
-  };
+  useEffect(() => {
+    fetch('http://localhost:8081/api/product/john.doe@example.com')
+      .then(response => response.json())
+      .then(data => setProducts(data))
+      .catch(error => console.error('Error fetching data:', error));
+  }, []);
 
   return (
-    <div style={{height:'80vh', display: 'grid', justifyContent:'center', alignItems:'center'}}>
-        <div style={styles.container}>
-        <h2 style={styles.heading}>Remove Products</h2>
-        <div style={styles.productList}>
-            {products.map((product) => (
-            <div key={product.id} style={styles.productItem}>
-                <input
-                type="checkbox"
-                checked={selectedProductIds.includes(product.id)}
-                onChange={() => handleCheckboxChange(product.id)}
-                />
-                <label style={styles.productLabel}>{product.productName}</label>
-            </div>
-            ))}
-        </div>
-        <button style={styles.removeButton} onClick={handleRemoveProducts}>
-            Remove Selected Products
-        </button>
-        </div>
+    <div className="container mt-5">
+      <h1>Product Table</h1>
+      <table className="table table-striped">
+        <thead>
+          <tr>
+            <th>Product URL</th>
+            <th>Product Name</th>
+            <th>User Email</th>
+            <th>Min Price</th>
+            <th>Limit Price</th>
+          </tr>
+        </thead>
+        <tbody>
+          {products.map(product => (
+            <tr key={product.productUrl}>
+              <td>{product.productUrl}</td>
+              <td>{product.productName}</td>
+              <td>{product.userEmail}</td>
+              <td>{product.minPrice}</td>
+              <td>{product.limitPrice}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
     </div>
-  ) 
+  );
 };
+
 
 const styles = {
   container: {

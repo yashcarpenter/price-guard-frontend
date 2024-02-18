@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
-import AddProduct from './components/addProduct';
+import AddProduct from './components/AddProduct';
 import WelcomePage from "./components/WelcomePage";
 import reportWebVitals from './reportWebVitals';
 import {
@@ -11,8 +11,8 @@ import {
   Route,
   Link,
 } from "react-router-dom";
-import AboutUs from './components/aboutCreator';
-import RemoveProduct from './components/removeProduct';
+import AboutUs from './components/AboutCreator' ;
+import RemoveProduct from './components/RemoveProduct';
 
 const router = createBrowserRouter([
   {

@@ -1,7 +1,6 @@
 import './App.css';
-import Header from './components/header'
-import AboutUs from './components/aboutCreator'
-import Footer from './components/footer'
+import Header from './components/Header'
+import Footer from './components/Footer'
 import {
   createBrowserRouter,
   RouterProvider,
@@ -9,7 +8,6 @@ import {
   Link,
 } from "react-router-dom";
 import { Outlet } from 'react-router-dom';
-import { DropdownDivider } from 'react-bootstrap';
 
 function App() {
   return (
