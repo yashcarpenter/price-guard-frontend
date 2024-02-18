@@ -11,12 +11,12 @@ const RemoveProduct = () => {
   }, []);
 
   return (
-    <div className="container mt-5">
+    <div className="container mt-5" >
       <h1>Product Table</h1>
       <table className="table table-striped">
         <thead>
           <tr>
-            <th>Product URL</th>
+            <th>Product URL </th>
             <th>Product Name</th>
             <th>User Email</th>
             <th>Min Price</th>
