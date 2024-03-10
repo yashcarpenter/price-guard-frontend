@@ -16,7 +16,6 @@ export default function App() {
         backgroundColor: "#f1f1f1",
         width: "100%",
         position: "sticky",
-        bottom: "0",
       }}
     >
       

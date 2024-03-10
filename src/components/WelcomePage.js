@@ -9,7 +9,7 @@ function WelcomePage() {
         display: "grid",
         alignItems: "center",
         justifyContent: "center",
-        height: "200vh"
+        height: "100vh"
       }}
     >
       <div
