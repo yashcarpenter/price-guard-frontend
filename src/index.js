@@ -11,8 +11,10 @@ import {
   Route,
   Link,
 } from "react-router-dom";
-import AboutUs from './components/AboutCreator' ;
+import AboutCreator from './components/AboutCreator' ;
 import RemoveProduct from './components/RemoveProduct';
+import UserProfile from './components/UserProfile';
+import SignupPage from './components/SignUp';
 
 const router = createBrowserRouter([
   {
@@ -20,8 +22,8 @@ const router = createBrowserRouter([
     element: <App/>,
     children: [
       {
-        path: "/aboutus",
-        element: <AboutUs />,
+        path: "/aboutcreator",
+        element: <AboutCreator />,
       },
       {
         path: "/addproduct",
@@ -33,6 +35,12 @@ const router = createBrowserRouter([
       },{
         path: "/removeproduct",
         element: <RemoveProduct/>,
+      },{
+        path: "/userprofile",
+        element: <UserProfile/>,
+      },{
+        path: "/signup",
+        element: <SignupPage/>,
       }
     ],
   },

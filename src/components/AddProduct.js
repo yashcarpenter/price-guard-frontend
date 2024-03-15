@@ -53,7 +53,7 @@ const AddProduct = ({ onSubmit = () => {} }) => {
 
   return (
     <div style={{ height: '100vh' }}>
-      <h2>Add a New Product</h2>
+      <h2 style={{marginTop:'5vh'}}>Add a New Product</h2>
       <form onSubmit={handleSubmit}>
         <label>
           Product Name:

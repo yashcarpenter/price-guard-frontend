@@ -16,10 +16,10 @@ export default function App() {
         backgroundColor: "#f1f1f1",
         width: "100%",
         position: "sticky",
+        zIndex:"100",
+        bottom: "0",
       }}
     >
-      
-
       <div
         className="text-center text-dark p-3"
         style={{
@@ -31,7 +31,7 @@ export default function App() {
         }}
       >
         <p>©2023 Copyright</p>
-        <h6>Hello World</h6>
+        <h5>Thanks to visit on Price Guard</h5>
       </div>
     </MDBFooter>
   );

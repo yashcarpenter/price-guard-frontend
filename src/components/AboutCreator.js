@@ -4,7 +4,7 @@ import CarouselImages from './ImageComponents/Carousel_Images';
 import Accordion from 'react-bootstrap/Accordion';
 
 
-function AboutUs() {
+function AboutCreator() {
   return (
     <>
       <Accordion
@@ -13,7 +13,7 @@ function AboutUs() {
           flexDirection: "column",
           alignItems: "center",
           justifyContent: "center",
-          height: "80vh",
+          height: "85vh",
         }}
       >
         <Accordion.Item eventKey="0">
@@ -61,4 +61,4 @@ function AboutUs() {
   );
 }
 
-export default AboutUs;
+export default AboutCreator;
