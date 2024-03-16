@@ -13,6 +13,7 @@ function Header() {
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="me-auto">
+              <Nav.Link  as={Link} to="/signin">Sign In</Nav.Link>
               <Nav.Link  as={Link} to="/signup">Sign Up</Nav.Link>
               <Nav.Link as={Link} to="/addproduct">Add Product</Nav.Link>
               <Nav.Link  as={Link} to="/removeproduct">Remove Product</Nav.Link>

@@ -1,6 +1,4 @@
 import React from "react";
-import Carousel from 'react-bootstrap/Carousel';
-import CarouselImages from './ImageComponents/Carousel_Images';
 import Accordion from 'react-bootstrap/Accordion';
 
 
