@@ -31,7 +31,7 @@ export default function App() {
         }}
       >
         <p>©2023 Copyright</p>
-        <h5>Thanks to visit on Price Guard</h5>
+        <h5 style={{fontFamily:'cursive'}}>Thanks to visit on Price Guard</h5>
       </div>
     </MDBFooter>
   );
