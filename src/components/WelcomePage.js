@@ -28,10 +28,10 @@ function WelcomePage() {
       </div>
       <div style={{display:'grid', justifyContent:"center", alignContent:'center'}}>
       <Link to="/addproduct">
-        <button style={{margin:'5px'}}>Add Product</button>
+        <button style={{ backgroundColor: '#4caf50', margin:'5px', color: 'white', padding: '10px 15px', border: 'none', borderRadius: '4px', cursor: 'pointer' }}>Add Product</button>
       </Link>
       <Link to="/removeproduct">
-        <button style={{margin:'5px'}}>Remove Product</button>
+        <button style={{ backgroundColor: '#4caf50', margin:'5px',color: 'white', padding: '10px 15px', border: 'none', borderRadius: '4px', cursor: 'pointer' }}>Remove Product</button>
       </Link>
       </div>
       <div style={{display:'grid', alignItems:'center', justifyContent:'center', width:'70vw'}}>

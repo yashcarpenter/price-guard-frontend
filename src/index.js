@@ -15,12 +15,17 @@ import AboutCreator from './components/AboutCreator' ;
 import RemoveProduct from './components/RemoveProduct';
 import UserProfile from './components/UserProfile';
 import SignupPage from './components/SignUp';
+import SignIn from './components/SignIn';
 
 const router = createBrowserRouter([
   {
     path: "",
     element: <App/>,
     children: [
+      {
+        path: "/signin",
+        element: <SignIn />,
+      },
       {
         path: "/aboutcreator",
         element: <AboutCreator />,
