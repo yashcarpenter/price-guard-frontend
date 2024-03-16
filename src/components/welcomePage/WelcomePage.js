@@ -1,5 +1,5 @@
-import React from 'react'
-
+import React from 'react';
+// import './buttonStyles.css';
 import { Link } from "react-router-dom";
 
 function WelcomePage() {
@@ -27,11 +27,11 @@ function WelcomePage() {
         </p>
       </div>
       <div style={{display:'grid', justifyContent:"center", alignContent:'center'}}>
-      <Link to="/addproduct">
-        <button style={{ backgroundColor: '#4caf50', margin:'5px', color: 'white', padding: '10px 15px', border: 'none', borderRadius: '4px', cursor: 'pointer' }}>Add Product</button>
+      <Link to="/signin">
+        <button style={styles.signin}>SignIn</button>
       </Link>
-      <Link to="/removeproduct">
-        <button style={{ backgroundColor: '#4caf50', margin:'5px',color: 'white', padding: '10px 15px', border: 'none', borderRadius: '4px', cursor: 'pointer' }}>Remove Product</button>
+      <Link to="/signup">
+        <button style={styles.signup}>SignUp</button>
       </Link>
       </div>
       <div style={{display:'grid', alignItems:'center', justifyContent:'center', width:'70vw'}}>
@@ -56,3 +56,30 @@ function WelcomePage() {
 }
 
 export default WelcomePage
+
+const styles = {
+  signin: {
+    color: 'rgb(104, 85, 224)',
+    backgroundColor: 'rgba(255, 255, 255, 1)',
+    border: '1px solid rgba(104, 85, 224, 1)',
+    margin: '5px',
+    padding: '10px 15px',
+    borderRadius: '4px',
+    cursor: 'pointer'
+  },
+  signup:{ 
+    color:'white',
+    backgroundColor: 'rgba(104, 85, 224, 1)', 
+    margin:'5px',
+    color: 'white', 
+    padding: '10px 15px', 
+    border: 'none', 
+    borderRadius: '4px', 
+    cursor: 'pointer' },
+  buttonHover: {
+    color: 'white',
+    width: '10px',
+    boxShadow: '0 0 20px rgba(104, 85, 224, 0.6)',
+    backgroundColor: 'rgba(104, 85, 224, 1)'
+  }
+}
