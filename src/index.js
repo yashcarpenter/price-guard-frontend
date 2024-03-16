@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import AddProduct from './components/AddProduct';
-import WelcomePage from "./components/WelcomePage";
+import WelcomePage from "./components/welcomePage/WelcomePage";
 import reportWebVitals from './reportWebVitals';
 import {
   createBrowserRouter,
