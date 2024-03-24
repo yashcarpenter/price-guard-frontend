@@ -1,20 +1,17 @@
 import './App.css';
 import Header from './components/Header'
 import Footer from './components/Footer'
-import {
-  createBrowserRouter,
-  RouterProvider,
-  Route,
-  Link,
-} from "react-router-dom";
 import { Outlet } from 'react-router-dom';
+import UserDataContext from './context/userDataContext';
 
 function App() {
   return (
     <>
-    <Header/>
-    <Outlet/>
-    <Footer/>
+    <UserDataContext>
+      <Header/>
+      <Outlet/>
+      <Footer/>
+    </UserDataContext>
     </>
   );
 }

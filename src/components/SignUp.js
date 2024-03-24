@@ -53,7 +53,7 @@ const SignupPage = () => {
   };
 
   return (
-    <div style={{height:'90vh', display:'grid', alignContent:'center', justifyContent:'center'}}>
+    <div style={{height:'85vh', display:'grid', alignContent:'center', justifyContent:'center'}}>
       <div className="signup-container" style={styles.signupContainer}>
         <h1 style={styles.header}>Signup Page</h1>
         <form onSubmit={handleSubmit} className="signup-form" style={styles.signupForm}>

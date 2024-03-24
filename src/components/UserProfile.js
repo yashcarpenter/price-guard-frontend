@@ -1,9 +1,12 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
+import UserDataContext from '../context/userDataContext';
 
 const UserProfile = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-  const [userData, setUserData] = useState(null);
+  const [responseData, setResponseData] = useState(null);
+
+  const userData = useContext(UserDataContext);
 
   useEffect(() => {
     fetch('http://localhost:8081/api/user/getUser/yash@example.com')
@@ -15,22 +18,44 @@ const UserProfile = () => {
       })
       .then(data => {
         if (data) {
-          setUserData(data);
+          setResponseData(data);
         } else {
           console.error('Empty response from API');
         }
-        setLoading(false); // Set loading to false after fetching data
+        setLoading(false);
       })
       .catch(error => {
         console.error('Error fetching data:', error);
         setError(error.message);
-        setLoading(false); // Set loading to false in case of an error
+        setLoading(false);
       });
   }, []);
 
-  const updateUserField = (email, fieldName, newValue) => {
-    // Your update logic here
+  const updateUserField = async (fieldName, newValue) => {
+    try {
+      const params = new URLSearchParams();
+      params.append(`new${fieldName.charAt(0).toUpperCase() + fieldName.slice(1)}`, newValue); // Capitalize the fieldName
+      params.append('email', responseData.email);
+  
+      const response = await fetch(`http://localhost:8081/api/user/update${fieldName}`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/x-www-form-urlencoded',
+        },
+        body: params,
+      });
+  
+      if (!response.ok) {
+        throw new Error('Network response was not ok');
+      }
+  
+      const updatedUser = await response.json();
+      setResponseData(updatedUser); // Update the state with the updated user data
+    } catch (error) {
+      console.error('Error updating user data:', error);
+    }
   };
+  
 
   if (loading) {
     return <p>Loading...</p>;
@@ -55,32 +80,32 @@ const UserProfile = () => {
           </tr>
         </thead>
         <tbody style={styles.tbody}>
-          <tr key={userData.email} style={styles.tr}>
-            <td style={styles.td}>{userData.userName}</td>
-            <td style={styles.td}>{userData.name}</td>
-            <td style={styles.td}>{userData.email}</td>
-            <td style={styles.td}>{userData.mobileNumber}</td>
+          <tr key={responseData.email} style={styles.tr}>
+            <td style={styles.td}>{responseData.userName}</td>
+            <td style={styles.td}>{responseData.name}</td>
+            <td style={styles.td}>{responseData.email}</td>
+            <td style={styles.td}>{responseData.mobileNumber}</td>
             <td style={styles.td}>
               <div style={styles.buttonContainer}>
                 <ChangeFieldButton
                   label="Email"
                   fieldName="Email"
-                  onFieldChange={(newValue) => updateUserField(userData.email, 'Email', newValue)}
+                  onFieldChange={(newValue) => updateUserField('Email', newValue)}
                 />
                 <ChangeFieldButton
                   label="Password"
                   fieldName="Password"
-                  onFieldChange={(newValue) => updateUserField(userData.email, 'Password', newValue)}
+                  onFieldChange={(newValue) => updateUserField('Password', newValue)}
                 />
                 <ChangeFieldButton
                   label="Mobile Number"
                   fieldName="MobileNumber"
-                  onFieldChange={(newValue) => updateUserField(userData.email, 'MobileNumber', newValue)}
+                  onFieldChange={(newValue) => updateUserField('MobileNumber', newValue)}
                 />
                 <ChangeFieldButton
                   label="Username"
                   fieldName="UserName"
-                  onFieldChange={(newValue) => updateUserField(userData.email, 'UserName', newValue)}
+                  onFieldChange={(newValue) => updateUserField('UserName', newValue)}
                 />
               </div>
             </td>
@@ -120,6 +145,7 @@ const ChangeFieldButton = ({ label, fieldName, onFieldChange }) => {
             type="text"
             value={newValue}
             onChange={(e) => setNewValue(e.target.value)}
+            style={styles.input}
           />
           <button style={styles.changeButton} onClick={handleFieldChange}>
             Save
