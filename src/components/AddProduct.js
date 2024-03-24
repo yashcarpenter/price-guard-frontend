@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
+import UserDataContext from '../context/userDataContext';
 
 const AddProduct = ({ onSubmit = () => {} }) => {
   const [productName, setProductName] = useState('');
@@ -6,14 +7,16 @@ const AddProduct = ({ onSubmit = () => {} }) => {
   const [limitPrice, setLimitPrice] = useState('');
   const [userEmail, setUserEmail] = useState('');
 
+  const userData = useContext(UserDataContext);
+
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     const productData = {
       url: productURL,
       productName,
-      userEmail,
-      limitPrice: parseFloat(limitPrice)
+      limitPrice: parseFloat(limitPrice),
+      userName: userData.data.userName
     };
 
     try {
