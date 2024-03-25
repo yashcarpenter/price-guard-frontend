@@ -27,7 +27,8 @@ const SignIn = () => {
     
       if (response.ok) {
         // Update userData only when response is successful
-        userData.updateData(data.userName, data.password, data.email); // Saving data in userData (context)
+        // userData.updateData(data.userName, data.password, data.email); // Saving data in userData (context)
+        // userData.updateData(data);
         navigate('/');
       } else if (response.status === 401) {
         // If unauthorized, display appropriate error message

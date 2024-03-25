@@ -11,14 +11,14 @@ const AddProduct = ({ onSubmit = () => {} }) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
+  
     const productData = {
+      productName: productName,
       url: productURL,
-      productName,
       limitPrice: parseFloat(limitPrice),
-      userName: userData.data.userName
+      userEmail: userEmail
     };
-
+  
     try {
       // Make the API call
       const response = await fetch('http://localhost:8081/api/product/add', {
@@ -28,7 +28,7 @@ const AddProduct = ({ onSubmit = () => {} }) => {
         },
         body: JSON.stringify(productData),
       });
-
+  
       // Check if the request was successful
       if (response.ok) {
         // Call the onSubmit prop with the form data
@@ -37,7 +37,7 @@ const AddProduct = ({ onSubmit = () => {} }) => {
         } else {
           console.error('onSubmit is not a function');
         }
-
+  
         // Reset the form fields after successful submission
         setProductName('');
         setProductURL('');

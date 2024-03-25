@@ -4,14 +4,16 @@ const RemoveProduct = () => {
   const [products, setProducts] = useState([]);
 
   useEffect(() => {
-    fetch('http://localhost:8081/api/product/yash@example.com')
+    fetch('http://localhost:8081/api/product/y@y', {
+      method: 'POST'
+    })
       .then(response => response.json())
       .then(data => setProducts(data))
       .catch(error => console.error('Error fetching data:', error));
   }, []);
 
   const handleRemoveProduct = (productUrl) => {
-    const userEmail = 'yash@example.com'; // Replace this with dynamic user email if needed
+    const userEmail = 'y@y'; // Replace this with dynamic user email if needed
   
     // API call to remove the product with the given productUrl and user email
     fetch(`http://localhost:8081/api/product/delete/${userEmail}?url=${encodeURIComponent(productUrl)}`, {
@@ -38,7 +40,7 @@ const RemoveProduct = () => {
             <tr>
               <th>Product URL </th>
               <th>Product Name</th>
-              <th>User Email</th>
+              {/* <th>User Email</th> */}
               <th>Min Price</th>
               <th>Limit Price</th>
               <th>Remove</th>
@@ -49,7 +51,7 @@ const RemoveProduct = () => {
               <tr key={product.productUrl}>
                 <td>{product.productUrl}</td>
                 <td>{product.productName}</td>
-                <td>{product.userEmail}</td>
+                {/* <td>{product.userEmail}</td> */}
                 <td>{product.minPrice}</td>
                 <td>{product.limitPrice}</td>
                 <td>

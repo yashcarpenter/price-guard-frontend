@@ -9,7 +9,7 @@ const UserProfile = () => {
   const userData = useContext(UserDataContext);
 
   useEffect(() => {
-    fetch('http://localhost:8081/api/user/getUser/yash@example.com')
+    fetch('http://localhost:8081/api/user/getUser/y@y')
       .then(response => {
         if (!response.ok) {
           throw new Error('Network response was not ok');
