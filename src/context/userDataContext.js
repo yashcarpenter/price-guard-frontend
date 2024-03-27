@@ -1,30 +1,25 @@
-import React, { createContext, useState } from "react";
-
-const UserContext = createContext();
+import React, { useState } from "react";
+import UserContext from "./UserContext";
 
 const UserDataContext = (props) =>{
-    // const defaultData = {
-    //     "userName": "",
-    //     "password":"",
-    //     "email":""
-    // };
-
-    // const [data, setData] = useState(defaultData);
-
-    // const updateData = (userName, password, email) => {
-    //     setData({
-    //         userName: userName,
-    //         password: password,
-    //         email: email
-    //     });
-    // };
-
-    const defaultData = [];
-    const [data, setData] = useState(defaultData)
-
-    const updateData = (data) => {
-        setData(data);
+    const defaultData = {
+        "userName": " ",
+        "password":" ",
+        "email":" ",
+        "isLoggedIn":"false"
     }
+
+    const [data, setData] = useState(defaultData);
+
+    const updateData = (username, password, email) => {
+        setData(prevData => ({
+            ...prevData,
+            userName: username,
+            password: password,
+            email: email,
+            isLoggedIn: true
+        }));
+    };
 
     return(
         <UserContext.Provider value={{data, updateData}}>

@@ -30,37 +30,27 @@ export default App;
 // import SignupPage from './components/SignUp';
 // import UserProfile from './components/UserProfile';
 // import RemoveProduct from './components/RemoveProduct';
+// import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom';
 
-// const App = () => {
-//   const [currentPage, setCurrentPage] = useState('welcome');
-
-//   const renderPage = () => {
-//     switch (currentPage) {
-//       case 'addproduct':
-//         return <AddProduct />;
-//       case 'aboutcreator':
-//         return <AboutCreator />;
-//       case 'signin':
-//         return <SignIn />;
-//       case 'signup':
-//         return <SignupPage />;
-//       case 'userprofile':
-//         return <UserProfile />;
-//       case 'removeproduct':
-//         return <RemoveProduct />;
-//       default:
-//         return <WelcomePage />;
-//     }
-//   };
-
+// function App() {
 //   return (
-//     <div>
-//       <Header />
-//       {renderPage()}
-//       <Footer />
-//     </div>
+//     <Router>
+//       <div className="App">
+//         {/* <Header/> */}
+//         <Routes>
+          // <Route path="/" element={<WelcomePage/>} />
+          // <Route path="/aboutcreator" element={<AboutCreator />} />
+          // <Route path="/signup" element={<SignupPage />} />
+          // <Route path="/signin" element={<SignIn />} />
+          // <Route path="/addproduct" element={<AddProduct />} />
+          // <Route path="/userprofile" element={<UserProfile />} />
+          // <Route path="/removeproduct" element={<RemoveProduct />} />
+//         </Routes>
+//         {/* <Footer/> */}
+//       </div>
+//     </Router>
 //   );
-// };
+// }
 
 // export default App;
 

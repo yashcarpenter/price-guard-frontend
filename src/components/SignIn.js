@@ -1,6 +1,6 @@
 import React, { useState, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
-import UserDataContext from '../context/userDataContext';
+import UserContext from '../context/UserContext';
 
 const SignIn = () => {
   const navigate = useNavigate();
@@ -10,7 +10,8 @@ const SignIn = () => {
   const [showPopup, setShowPopup] = useState(false); // New state for controlling the pop-up
 
   // Using context API
-  const userData = useContext(UserDataContext);
+  const { data, updateData } = useContext(UserContext);
+  console.log(data);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -23,26 +24,23 @@ const SignIn = () => {
         },
       });
     
-      const data = await response.json();
+      const responseData = await response.json();
     
       if (response.ok) {
-        // Update userData only when response is successful
-        // userData.updateData(data.userName, data.password, data.email); // Saving data in userData (context)
-        // userData.updateData(data);
+        updateData(responseData.userName, responseData.password, responseData.email);
+        console.log(responseData);
         navigate('/');
       } else if (response.status === 401) {
-        // If unauthorized, display appropriate error message
-        setError(data);
-        setShowPopup(true); // Show the pop-up when there is an error
+        setError(responseData);
+        setShowPopup(true); 
       } else {
-        // Handle other error cases
         setError('An error occurred while signing in');
-        setShowPopup(true); // Show the pop-up for other errors as well
+        setShowPopup(true); 
       }
     } catch (error) {
       console.error('Error signing in:', error);
       setError('An error occurred while signing in');
-      setShowPopup(true); // Show the pop-up for any errors
+      setShowPopup(true);
     }
   }
 
