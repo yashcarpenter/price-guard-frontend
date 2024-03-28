@@ -37,7 +37,7 @@ function Header() {
         <Container>
           <div style={{ marginLeft: '30vw' }}>
             {data.isLoggedIn ? (
-              <button onClick={handleSignOut} className="SignInButton">Sign Out</button>
+              <button onClick={handleSignOut} style={styles.signout}>Sign Out</button>
             ) : (
               <Nav.Link as={Link} to="/signin" className="SignInButton">Sign In</Nav.Link>
             )}
@@ -56,7 +56,16 @@ const styles = {
     alignItems: 'center',
   },
   logoImage: {
-    width: '120px',
-    marginRight: '10px',
+    width: '100px',
+    marginLeft: '10vw',
   },
+  signout: {
+    color: 'black',
+    backgroundColor: 'white',
+    border: 'none', 
+    margin: '10px',
+    padding: '10px',
+    cursor: 'pointer',
+    display: 'grid'
+  }
 };
