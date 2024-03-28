@@ -1,5 +1,4 @@
 import React from 'react';
-// import './buttonStyles.css';
 import { Link } from "react-router-dom";
 
 function WelcomePage() {

@@ -11,13 +11,13 @@ const UserDataContext = (props) =>{
 
     const [data, setData] = useState(defaultData);
 
-    const updateData = (username, password, email) => {
+    const updateData = (username, password, email, isLoggedIn) => {
         setData(prevData => ({
             ...prevData,
             userName: username,
             password: password,
             email: email,
-            isLoggedIn: true
+            isLoggedIn: isLoggedIn
         }));
     };
 

@@ -1,20 +1,26 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
+import UserContext from '../context/UserContext';
 
 const RemoveProduct = () => {
   const [products, setProducts] = useState([]);
+  const { data, updateData } = useContext(UserContext);
 
   useEffect(() => {
-    fetch('http://localhost:8081/api/product/y@y', {
+      fetch(`http://localhost:8081/api/product/${data.email}`, {
       method: 'POST'
     })
-      .then(response => response.json())
-      .then(data => setProducts(data))
+      .then(response => {
+        if (!response.ok) {
+          throw new Error('Please Login');
+        }
+        return response.json();
+      })
+      .then(responseData => setProducts(responseData))
       .catch(error => console.error('Error fetching data:', error));
-  }, []);
+  }, [data.email]);
 
   const handleRemoveProduct = (productUrl) => {
-    const userEmail = 'y@y'; // Replace this with dynamic user email if needed
-  
+    const userEmail = data.email;
     // API call to remove the product with the given productUrl and user email
     fetch(`http://localhost:8081/api/product/delete/${userEmail}?url=${encodeURIComponent(productUrl)}`, {
       method: 'POST',

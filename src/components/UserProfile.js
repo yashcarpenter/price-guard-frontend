@@ -1,18 +1,18 @@
 import React, { useState, useEffect, useContext } from 'react';
-import UserDataContext from '../context/userDataContext';
+import UserContext from '../context/UserContext';
 
 const UserProfile = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [responseData, setResponseData] = useState(null);
 
-  const userData = useContext(UserDataContext);
+  const { data, updateData } = useContext(UserContext);
 
   useEffect(() => {
-    fetch('http://localhost:8081/api/user/getUser/y@y')
+    fetch(`http://localhost:8081/api/user/getUser/${data.email}`)
       .then(response => {
         if (!response.ok) {
-          throw new Error('Network response was not ok');
+          throw new Error('Please Login');
         }
         return response.json();
       })
@@ -29,7 +29,7 @@ const UserProfile = () => {
         setError(error.message);
         setLoading(false);
       });
-  }, []);
+  }, [data.email]);
 
   const updateUserField = async (fieldName, newValue) => {
     try {

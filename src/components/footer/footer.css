@@ -1,0 +1,16 @@
+/* footer.css */
+
+.logOutButton {
+    color: #fff;
+    background-color: #d9534f; /* Red color for button background */
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease; /* Smooth transition for hover effect */
+  }
+  
+  .logOutButton:hover {
+    background-color: #c9302c; /* Darker red color on hover */
+  }
+  

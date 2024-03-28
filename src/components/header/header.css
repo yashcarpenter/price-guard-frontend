@@ -1,0 +1,20 @@
+.header {
+    background-color: white;
+    position: sticky;
+    top: 0%;
+    z-index: 100;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2); /* Adjust the shadow properties here */
+}
+
+.buttons {
+    color: black;
+    margin: 10px;
+    padding: 10px;
+}
+
+.SignInButton {
+    display: grid;
+    color: black;
+    margin: 10px;
+    padding: 10px;
+}

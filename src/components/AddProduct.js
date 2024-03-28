@@ -1,5 +1,5 @@
 import React, { useState, useContext } from 'react';
-import UserDataContext from '../context/userDataContext';
+import UserContext from '../context/UserContext';
 
 const AddProduct = ({ onSubmit = () => {} }) => {
   const [productName, setProductName] = useState('');
@@ -7,7 +7,7 @@ const AddProduct = ({ onSubmit = () => {} }) => {
   const [limitPrice, setLimitPrice] = useState('');
   const [userEmail, setUserEmail] = useState('');
 
-  const userData = useContext(UserDataContext);
+  const { data, updateData } = useContext(UserContext);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -16,7 +16,7 @@ const AddProduct = ({ onSubmit = () => {} }) => {
       productName: productName,
       url: productURL,
       limitPrice: parseFloat(limitPrice),
-      userEmail: userEmail
+      userEmail: data.email
     };
   
     try {
@@ -42,7 +42,6 @@ const AddProduct = ({ onSubmit = () => {} }) => {
         setProductName('');
         setProductURL('');
         setLimitPrice('');
-        setUserEmail('');
       } else {
         console.error('Failed to add product. HTTP status:', response.status);
       }
@@ -82,16 +81,6 @@ const AddProduct = ({ onSubmit = () => {} }) => {
             type="number"
             value={limitPrice}
             onChange={(e) => setLimitPrice(e.target.value)}
-            required
-          />
-        </label>
-        <label style={{ marginBottom: '10px', fontWeight: 'bold' }}>
-          User Email:
-          <input
-            style={{ width: '100%', padding: '8px', marginBottom: '15px', border: '1px solid #ccc', borderRadius: '4px', boxSizing: 'border-box' }}
-            type="email"
-            value={userEmail}
-            onChange={(e) => setUserEmail(e.target.value)}
             required
           />
         </label>

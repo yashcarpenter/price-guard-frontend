@@ -27,7 +27,7 @@ const SignIn = () => {
       const responseData = await response.json();
     
       if (response.ok) {
-        updateData(responseData.userName, responseData.password, responseData.email);
+        updateData(responseData.userName, responseData.password, responseData.email, true);
         console.log(responseData);
         navigate('/');
       } else if (response.status === 401) {
