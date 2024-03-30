@@ -1,5 +1,6 @@
 import React, { useState, useContext } from 'react';
 import UserContext from '../context/UserContext';
+import PleaseLogin from './dialougeBox/PleaseLogin';
 
 const AddProduct = ({ onSubmit = () => {} }) => {
   const [productName, setProductName] = useState('');
@@ -49,7 +50,9 @@ const AddProduct = ({ onSubmit = () => {} }) => {
       console.error('Error while adding product:', error);
     }
   };
-
+  if(!data.isLoggedIn){
+    return <PleaseLogin/>;
+  }
   return (
     <div style={{ height: '70vh', margin:'5vh', textAlign: 'center', color: '#333' }}>
       <h2 style={{margin: '10vh'}}>Add a New Product</h2>

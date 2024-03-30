@@ -9,10 +9,10 @@ import UserContext from '../../context/UserContext';
 
 function Header() {
   const { data, updateData } = useContext(UserContext);
+  console.log(data.isLoggedIn);
   const handleSignOut = () =>{
     const nullData = '';
     updateData(nullData, nullData, nullData, false);
-    console.log(data);
   }
   return (
     <div className="header">
@@ -36,9 +36,9 @@ function Header() {
         </Container>
         <Container>
           <div style={{ marginLeft: '30vw' }}>
-            {data.isLoggedIn ? (
+            {data.isLoggedIn? (
               <button onClick={handleSignOut} style={styles.signout}>Sign Out</button>
-            ) : (
+              ) : (
               <Nav.Link as={Link} to="/signin" className="SignInButton">Sign In</Nav.Link>
             )}
           </div>

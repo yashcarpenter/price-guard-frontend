@@ -6,7 +6,7 @@ const UserDataContext = (props) =>{
         "userName": " ",
         "password":" ",
         "email":" ",
-        "isLoggedIn":"false"
+        "isLoggedIn": false
     }
 
     const [data, setData] = useState(defaultData);

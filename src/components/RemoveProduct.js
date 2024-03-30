@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useContext } from 'react';
 import UserContext from '../context/UserContext';
+import PleaseLogin from './dialougeBox/PleaseLogin';
 
 const RemoveProduct = () => {
   const [products, setProducts] = useState([]);
@@ -12,6 +13,7 @@ const RemoveProduct = () => {
       .then(response => {
         if (!response.ok) {
           throw new Error('Please Login');
+
         }
         return response.json();
       })
@@ -35,8 +37,10 @@ const RemoveProduct = () => {
       })
       .catch(error => console.error('Error removing product:', error));
   };
-  
 
+  if(!data.isLoggedIn){
+    return <PleaseLogin/>;
+  } else{
   return (
     <div style={{height:"100vh"}}>
       <div className="container mt-5">
@@ -74,8 +78,8 @@ const RemoveProduct = () => {
         </table>
       </div>
     </div>
-    
   );
+}
 };
 
 

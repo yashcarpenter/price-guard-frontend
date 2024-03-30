@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useContext } from 'react';
 import UserContext from '../context/UserContext';
+import PleaseLogin from './dialougeBox/PleaseLogin';
 
 const UserProfile = () => {
   const [loading, setLoading] = useState(true);
@@ -62,7 +63,7 @@ const UserProfile = () => {
   }
 
   if (error) {
-    return <p>Error: {error}</p>;
+    return <PleaseLogin/>;
   }
 
   return (
