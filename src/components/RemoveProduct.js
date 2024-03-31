@@ -6,14 +6,21 @@ const RemoveProduct = () => {
   const [products, setProducts] = useState([]);
   const { data, updateData } = useContext(UserContext);
 
+  const formatDateTime = (dateTime) => {
+    return new Date(dateTime).toLocaleDateString('en-US', {
+      year: 'numeric',
+      month: 'long',
+      day: 'numeric',
+    });
+  };
+
   useEffect(() => {
-      fetch(`http://localhost:8081/api/product/${data.email}`, {
-      method: 'POST'
+    fetch(`http://localhost:8081/api/product/${data.email}`, {
+      method: 'POST',
     })
       .then(response => {
         if (!response.ok) {
           throw new Error('Please Login');
-
         }
         return response.json();
       })
@@ -21,16 +28,16 @@ const RemoveProduct = () => {
       .catch(error => console.error('Error fetching data:', error));
   }, [data.email]);
 
-  const handleRemoveProduct = (productUrl) => {
+  const handleRemoveProduct = (productAsin) => {
     const userEmail = data.email;
-    // API call to remove the product with the given productUrl and user email
-    fetch(`http://localhost:8081/api/product/delete/${userEmail}?url=${encodeURIComponent(productUrl)}`, {
+    // API call to remove the product with the given productAsin and user email
+    fetch(`http://localhost:8081/api/product/delete/${userEmail}?productAsin=${encodeURIComponent(productAsin)}`, {
       method: 'POST',
     })
       .then(response => {
         if (response.ok) {
           // Remove the product from the local state
-          setProducts(prevProducts => prevProducts.filter(product => product.productUrl !== productUrl));
+          setProducts(prevProducts => prevProducts.filter(product => product.productAsin !== productAsin));
         } else {
           console.error('Failed to remove product:', response.statusText);
         }
@@ -38,50 +45,53 @@ const RemoveProduct = () => {
       .catch(error => console.error('Error removing product:', error));
   };
 
-  if(!data.isLoggedIn){
-    return <PleaseLogin/>;
-  } else{
-  return (
-    <div style={{height:"100vh"}}>
-      <div className="container mt-5">
-        <div style={{display: "grid", alignItems: "center", justifyContent: "center", height:"10vh"}}><h1>Product Table</h1></div>
-        <table className="table table-striped">
-          <thead>
-            <tr>
-              <th>Product URL </th>
-              <th>Product Name</th>
-              {/* <th>User Email</th> */}
-              <th>Min Price</th>
-              <th>Limit Price</th>
-              <th>Remove</th>
-            </tr>
-          </thead>
-          <tbody>
-            {products.map(product => (
-              <tr key={product.productUrl}>
-                <td>{product.productUrl}</td>
-                <td>{product.productName}</td>
-                {/* <td>{product.userEmail}</td> */}
-                <td>{product.minPrice}</td>
-                <td>{product.limitPrice}</td>
-                <td>
-                  <button
-                    style={styles.removeButton}
-                    onClick={() => handleRemoveProduct(product.productUrl)}
-                  >
-                    Remove
-                  </button>
-                </td>
+  if (!data.isLoggedIn) {
+    return <PleaseLogin />;
+  } else {
+    return (
+      <div style={{ height: "100vh" }}>
+        <div className="container mt-5">
+          <div style={{ display: "grid", alignItems: "center", justifyContent: "center", height: "10vh" }}><h1>Product Table</h1></div>
+          <table className="table table-striped">
+            <thead>
+              <tr>
+                <th>Product ASIN </th>
+                <th>Product Name</th>
+                <th>Added At</th>
+                <th>Limit Price</th>
+                <th>Last Price</th>
+                <th>Min Price</th>
+                <th>Min Price Was At</th>
+                <th>Remove</th>
               </tr>
-            ))}
-          </tbody>
-        </table>
+            </thead>
+            <tbody>
+              {products.map(product => (
+                <tr key={product.productAsin}>
+                  <td>{product.productAsin}</td>
+                  <td>{product.productName}</td>
+                  <td>{formatDateTime(product.productAddedAt)}</td>
+                  <td>{product.limitPrice}</td>
+                  <td>{product.lastPrice}</td>
+                  <td>{product.minPrice}</td>
+                  <td>{formatDateTime(product.lastMinPriceAt)}</td>
+                  <td>
+                    <button
+                      style={styles.removeButton}
+                      onClick={() => handleRemoveProduct(product.productAsin)}
+                    >
+                      Remove
+                    </button>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
       </div>
-    </div>
-  );
-}
+    );
+  }
 };
-
 
 const styles = {
   removeButton: {

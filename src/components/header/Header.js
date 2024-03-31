@@ -19,7 +19,9 @@ function Header() {
       <Navbar expand="lg">
         <div style={styles.container}>
           <div style={styles.logo}>
+          <a href="/">
             <img src={logo} alt="Logo" style={styles.logoImage} />
+          </a>
           </div>
         </div>
         <Container>
@@ -30,7 +32,7 @@ function Header() {
               <Nav.Link as={Link} to="/addproduct" className="buttons">Add Product</Nav.Link>
               <Nav.Link as={Link} to="/removeproduct" className="buttons">Remove Product</Nav.Link>
               <Nav.Link as={Link} to="/userprofile" className="buttons">User Profile</Nav.Link>
-              <Nav.Link as={Link} to="/aboutcreator" className="buttons">About Creator</Nav.Link>
+              {/* <Nav.Link as={Link} to="/aboutcreator" className="buttons">About Creator</Nav.Link> */}
             </Nav>
           </Navbar.Collapse>
         </Container>

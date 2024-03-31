@@ -13,9 +13,10 @@ import {
 } from "react-router-dom";
 import AboutCreator from './components/AboutCreator' ;
 import RemoveProduct from './components/RemoveProduct';
-import UserProfile from './components/UserProfile';
+// import UserProfile from './components/UserProfile';
 import SignupPage from './components/SignUp';
 import SignIn from './components/SignIn';
+import UserProfile from './components/userProfile/UserProfile';
 
 const router = createBrowserRouter([
   {

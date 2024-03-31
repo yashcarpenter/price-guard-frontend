@@ -4,7 +4,7 @@ import PleaseLogin from './dialougeBox/PleaseLogin';
 
 const AddProduct = ({ onSubmit = () => {} }) => {
   const [productName, setProductName] = useState('');
-  const [productURL, setProductURL] = useState('');
+  const [productASIN, setProductASIN] = useState('');
   const [limitPrice, setLimitPrice] = useState('');
   const [userEmail, setUserEmail] = useState('');
 
@@ -15,7 +15,7 @@ const AddProduct = ({ onSubmit = () => {} }) => {
   
     const productData = {
       productName: productName,
-      url: productURL,
+      productAsin: productASIN,
       limitPrice: parseFloat(limitPrice),
       userEmail: data.email
     };
@@ -41,7 +41,7 @@ const AddProduct = ({ onSubmit = () => {} }) => {
   
         // Reset the form fields after successful submission
         setProductName('');
-        setProductURL('');
+        setProductASIN('');
         setLimitPrice('');
       } else {
         console.error('Failed to add product. HTTP status:', response.status);
@@ -68,12 +68,12 @@ const AddProduct = ({ onSubmit = () => {} }) => {
           />
         </label>
         <label style={{ marginBottom: '10px', fontWeight: 'bold' }}>
-          Product URL:
+          Product ASIN:
           <input
             style={{ width: '100%', padding: '8px', marginBottom: '15px', border: '1px solid #ccc', borderRadius: '4px', boxSizing: 'border-box' }}
             type="text"
-            value={productURL}
-            onChange={(e) => setProductURL(e.target.value)}
+            value={productASIN}
+            onChange={(e) => setProductASIN(e.target.value)}
             required
           />
         </label>
