@@ -9,7 +9,6 @@ import UserContext from '../../context/UserContext';
 
 function Header() {
   const { data, updateData } = useContext(UserContext);
-  console.log(data.isLoggedIn);
   const handleSignOut = () =>{
     const nullData = '';
     updateData(nullData, nullData, nullData, false);
@@ -32,7 +31,7 @@ function Header() {
               <Nav.Link as={Link} to="/addproduct" className="buttons">Add Product</Nav.Link>
               <Nav.Link as={Link} to="/removeproduct" className="buttons">Remove Product</Nav.Link>
               <Nav.Link as={Link} to="/userprofile" className="buttons">User Profile</Nav.Link>
-              {/* <Nav.Link as={Link} to="/aboutcreator" className="buttons">About Creator</Nav.Link> */}
+              <Nav.Link as={Link} to="/graph" className="buttons">Graph</Nav.Link>
             </Nav>
           </Navbar.Collapse>
         </Container>

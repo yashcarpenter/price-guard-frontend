@@ -17,6 +17,7 @@ import RemoveProduct from './components/RemoveProduct';
 import SignupPage from './components/SignUp';
 import SignIn from './components/SignIn';
 import UserProfile from './components/userProfile/UserProfile';
+import PriceGraph from './components/ProductGraph';
 
 const router = createBrowserRouter([
   {
@@ -47,6 +48,9 @@ const router = createBrowserRouter([
       },{
         path: "/signup",
         element: <SignupPage/>,
+      },{
+        path: "/graph",
+        element: <PriceGraph/>,
       }
     ],
   },

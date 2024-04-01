@@ -4,7 +4,7 @@ import PleaseLogin from './dialougeBox/PleaseLogin';
 
 const RemoveProduct = () => {
   const [products, setProducts] = useState([]);
-  const { data, updateData } = useContext(UserContext);
+  const { data } = useContext(UserContext);
 
   const formatDateTime = (dateTime) => {
     return new Date(dateTime).toLocaleDateString('en-US', {
@@ -52,6 +52,7 @@ const RemoveProduct = () => {
       <div style={{ height: "100vh" }}>
         <div className="container mt-5">
           <div style={{ display: "grid", alignItems: "center", justifyContent: "center", height: "10vh" }}><h1>Product Table</h1></div>
+          <div style={{ display: "grid", alignItems: "center", justifyContent: "center"}}>
           <table className="table table-striped">
             <thead>
               <tr>
@@ -87,6 +88,7 @@ const RemoveProduct = () => {
               ))}
             </tbody>
           </table>
+          </div>
         </div>
       </div>
     );
