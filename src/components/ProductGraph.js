@@ -73,7 +73,7 @@ function PriceChart() {
   return (
     <div >
     <div style={{height:'50vh'}}>
-      <canvas id="myChart"></canvas>
+      <canvas id="myChart" ></canvas>
     </div>
     </div>
   );

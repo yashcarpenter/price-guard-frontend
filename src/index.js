@@ -12,7 +12,7 @@ import {
   Link,
 } from "react-router-dom";
 import AboutCreator from './components/AboutCreator' ;
-import RemoveProduct from './components/RemoveProduct';
+import ProductList from './components/ProductList';
 // import UserProfile from './components/UserProfile';
 import SignupPage from './components/SignUp';
 import SignIn from './components/SignIn';
@@ -41,7 +41,7 @@ const router = createBrowserRouter([
         element: <WelcomePage />,
       },{
         path: "/removeproduct",
-        element: <RemoveProduct/>,
+        element: <ProductList/>,
       },{
         path: "/userprofile",
         element: <UserProfile/>,

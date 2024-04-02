@@ -2,7 +2,7 @@ import React, { useState, useEffect, useContext } from 'react';
 import UserContext from '../context/UserContext';
 import PleaseLogin from './dialougeBox/PleaseLogin';
 
-const RemoveProduct = () => {
+const ProductList = () => {
   const [products, setProducts] = useState([]);
   const { data } = useContext(UserContext);
 
@@ -105,4 +105,4 @@ const styles = {
   },
 };
 
-export default RemoveProduct;
+export default ProductList;
