@@ -31,7 +31,7 @@ function Header() {
               <Nav.Link as={Link} to="/addproduct" className="buttons">Add Product</Nav.Link>
               <Nav.Link as={Link} to="/removeproduct" className="buttons">Product List</Nav.Link>
               <Nav.Link as={Link} to="/userprofile" className="buttons">User Profile</Nav.Link>
-              <Nav.Link as={Link} to="/graph" className="buttons">Graph</Nav.Link>
+              {/* <Nav.Link as={Link} to="/graph" className="buttons">Graph</Nav.Link> */}
             </Nav>
           </Navbar.Collapse>
         </Container>

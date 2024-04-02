@@ -1,10 +1,12 @@
 import React, { useState, useEffect, useContext } from 'react';
 import UserContext from '../context/UserContext';
 import PleaseLogin from './dialougeBox/PleaseLogin';
+import { useNavigate } from 'react-router-dom';
 
 const ProductList = () => {
+  const navigate = useNavigate();
   const [products, setProducts] = useState([]);
-  const { data } = useContext(UserContext);
+  const { data, asin, updateAsin } = useContext(UserContext);
 
   const formatDateTime = (dateTime) => {
     return new Date(dateTime).toLocaleDateString('en-US', {
@@ -13,7 +15,7 @@ const ProductList = () => {
       day: 'numeric',
     });
   };
-
+  console.log(asin.asin);
   useEffect(() => {
     fetch(`http://localhost:8081/api/product/${data.email}`, {
       method: 'POST',
@@ -45,6 +47,11 @@ const ProductList = () => {
       .catch(error => console.error('Error removing product:', error));
   };
 
+  const handleGraphOnClick = (asin) =>{
+    updateAsin(asin);
+    navigate('/graph');
+  }
+
   if (!data.isLoggedIn) {
     return <PleaseLogin />;
   } else {
@@ -69,6 +76,14 @@ const ProductList = () => {
             <tbody>
               {products.map(product => (
                 <tr key={product.productAsin}>
+                  <td>
+                    <button
+                      style={styles.removeButton}
+                      onClick={() => handleGraphOnClick(product.productAsin)}
+                    >
+                      Price Graph
+                    </button>
+                  </td>
                   <td>{product.productAsin}</td>
                   <td>{product.productName}</td>
                   <td>{formatDateTime(product.productAddedAt)}</td>

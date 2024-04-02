@@ -8,9 +8,7 @@ const UserDataContext = (props) =>{
         "email":" ",
         "isLoggedIn": false
     }
-
     const [data, setData] = useState(defaultData);
-
     const updateData = (username, password, email, isLoggedIn) => {
         setData(prevData => ({
             ...prevData,
@@ -21,8 +19,19 @@ const UserDataContext = (props) =>{
         }));
     };
 
+    const defaultAsin = {
+        "asin": ""
+    }
+    const [asin, setAsin] = useState(defaultAsin);
+    const updateAsin = (asin) => {
+        setAsin(prevData => ({
+            ...prevData,
+            asin: asin
+        }));
+    };
+
     return(
-        <UserContext.Provider value={{data, updateData}}>
+        <UserContext.Provider value={{data, updateData, asin, updateAsin}}>
             {props.children}
         </UserContext.Provider>
     );

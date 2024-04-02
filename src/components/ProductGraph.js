@@ -1,11 +1,14 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
+import UserContext from '../context/UserContext';
 import Chart from 'chart.js/auto';
 
 function PriceChart() {
+  const { asin } = useContext(UserContext);
+
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch('http://localhost:8081/api/price/getprices/B0BSRVL2VV', {
+        const response = await fetch(`http://localhost:8081/api/price/getprices/${asin.asin}`, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
