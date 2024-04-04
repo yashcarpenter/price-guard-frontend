@@ -33,7 +33,7 @@ function PriceChart() {
         const yMin = Math.floor(minPrice / 100) * 100; // Round down to nearest 100
         const yMax = Math.ceil(maxPrice / 100) * 100; // Round up to nearest 100
 
-        // Create chart
+        // Create chart with advanced styling
         const config = {
           type: 'line',
           data: {
@@ -41,8 +41,14 @@ function PriceChart() {
             datasets: [{
               label: 'Price',
               data: datasetValues,
-              borderColor: 'rgba(75, 192, 192, 1)',
-              fill: false
+              borderColor: 'rgba(3, 169, 244, 1)', // Light blue
+              backgroundColor: 'rgba(3, 169, 244, 0.3)', // Transparent light blue fill
+              borderWidth: 2, // Thicker line
+              pointRadius: 5, // Larger data point markers
+              pointBorderColor: 'rgba(3, 169, 244, 1)', // Matches line color
+              pointBackgroundColor: 'white', // White data point fill
+              pointHoverRadius: 7, // Increase hover size
+              pointHoverBackgroundColor: 'rgba(3, 169, 244, 0.8)', // Highlight on hover
             }]
           },
           options: {
@@ -52,8 +58,28 @@ function PriceChart() {
                 min: yMin,
                 max: yMax,
                 ticks: {
-                  stepSize: 100 // Set interval to 100
+                  stepSize: 100,
+                  callback: (value, index, values) => { // Custom Y-axis label formatting (optional)
+                    return 'Rs.' + value; // Add dollar sign prefix
+                  }
                 }
+              }
+            },
+            title: {
+              display: true,
+              text: 'Price History',
+              fontSize: 18,
+              fontColor: '#303030' // Darker title color
+            },
+            legend: {
+              display: true,
+              labels: {
+                fontColor: '#666'
+              }
+            },
+            elements: {
+              line: {
+                tension: 0.4, // Add slight curve to the line
               }
             }
           }
@@ -74,10 +100,10 @@ function PriceChart() {
   }, []);
 
   return (
-    <div >
-    <div style={{height:'50vh'}}>
-      <canvas id="myChart" ></canvas>
-    </div>
+    <div style={{height:'85vh', background: '',display: 'grid', justifyContent: 'center', alignItems:'center' }}>
+      <div style={{ height: '400px', width: '800px' }}> {/* Adjust chart dimensions as needed */}
+        <canvas id="myChart" ></canvas>
+      </div>
     </div>
   );
 }

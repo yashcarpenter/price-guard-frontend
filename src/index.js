@@ -17,7 +17,6 @@ import ProductList from './components/ProductList';
 import SignupPage from './components/SignUp';
 import UserProfile from './components/userProfile/UserProfile';
 import PriceGraph from './components/ProductGraph';
-// import SignIn from './components/SignIn';
 import SignIn from './components/signIn/SignIn';
 
 const router = createBrowserRouter([
