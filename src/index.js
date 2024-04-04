@@ -15,9 +15,10 @@ import AboutCreator from './components/AboutCreator' ;
 import ProductList from './components/ProductList';
 // import UserProfile from './components/UserProfile';
 import SignupPage from './components/SignUp';
-import SignIn from './components/SignIn';
 import UserProfile from './components/userProfile/UserProfile';
 import PriceGraph from './components/ProductGraph';
+// import SignIn from './components/SignIn';
+import SignIn from './components/signIn/SignIn';
 
 const router = createBrowserRouter([
   {

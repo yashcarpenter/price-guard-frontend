@@ -60,9 +60,10 @@ const ProductList = () => {
         <div className="container mt-5">
           <div style={{ display: "grid", alignItems: "center", justifyContent: "center", height: "10vh" }}><h1>Product Table</h1></div>
           <div style={{ display: "grid", alignItems: "center", justifyContent: "center"}}>
-          <table className="table table-striped">
-            <thead>
+          <table className="table table-hover">
+            <thead className="thead-dark">
               <tr>
+                <th>Graph</th>
                 <th>Product ASIN </th>
                 <th>Product Name</th>
                 <th>Added At</th>
@@ -78,10 +79,10 @@ const ProductList = () => {
                 <tr key={product.productAsin}>
                   <td>
                     <button
-                      style={styles.removeButton}
+                      className="btn btn-primary"
                       onClick={() => handleGraphOnClick(product.productAsin)}
                     >
-                      Price Graph
+                      Graph
                     </button>
                   </td>
                   <td>{product.productAsin}</td>
@@ -93,7 +94,7 @@ const ProductList = () => {
                   <td>{formatDateTime(product.lastMinPriceAt)}</td>
                   <td>
                     <button
-                      style={styles.removeButton}
+                      className="btn btn-danger"
                       onClick={() => handleRemoveProduct(product.productAsin)}
                     >
                       Remove
@@ -108,16 +109,6 @@ const ProductList = () => {
       </div>
     );
   }
-};
-
-const styles = {
-  removeButton: {
-    backgroundColor: '#d9534f',
-    color: 'white',
-    border: 'none',
-    borderRadius: '4px',
-    cursor: 'pointer',
-  },
 };
 
 export default ProductList;

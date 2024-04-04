@@ -34,7 +34,7 @@ function WelcomePage() {
           {!data.isLoggedIn? (
             <div style={{display:'grid', justifyContent:"center", alignContent:'center'}}>
             <Link to="/signin">
-              <button className='signin'>SignIn</button>
+              <button className='signin'>Login</button>
             </Link>
             <Link to="/signup">
               <button className='signup'>Register</button>

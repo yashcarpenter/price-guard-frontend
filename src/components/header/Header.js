@@ -38,9 +38,9 @@ function Header() {
         <Container>
           <div style={{ marginLeft: '30vw' }}>
             {data.isLoggedIn? (
-              <button onClick={handleSignOut} style={styles.signout}>Sign Out</button>
+              <button onClick={handleSignOut} style={styles.signout}>Log Out</button>
               ) : (
-              <Nav.Link as={Link} to="/signin" className="SignInButton">Sign In</Nav.Link>
+              <Nav.Link as={Link} to="/signin" className="SignInButton">Login</Nav.Link>
             )}
           </div>
         </Container>

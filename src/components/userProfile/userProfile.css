@@ -1,100 +1,68 @@
-.outerContainer {
-    height: 90vh;
-    width: 100vw;
-    display: grid;
-    justify-content: center;
-    align-items: center;
+
+
+.outer-container-1 {
+  max-width: 800px;
+  margin: 0 auto;
 }
 
-.innerContainer {
-    display: grid;
-    justify-content: center;
-    align-items: center;
-    height: 80vh;
-    width: 70vw;
-    /* border: 10px; */
-    /* box-shadow: 0 0 8px 0 rgba(0, 0, 0, 0.1); */
+.user-profile-heading {
+  text-align: center;
+  margin: 20px 0;
 }
 
-.tableContainer {
-    height: 70vh;
-    display: grid;
-    justify-content: center;
-    /* align-items: center; */
+.user-profile-table {
+  width: 100%;
+  border-collapse: collapse;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
-/* styles.css */
+.user-profile-table th,
+.user-profile-table td {
+  padding: 15px;
+}
 
-.table {
-    width: 80vw;
-    margin-top: 20px;
-    border-collapse: collapse;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    font-family: Arial, sans-serif;
-  }
-  
-  .thead {
-    background-color: #007bff;
-    color: #fff;
-  }
-  
-  .th {
-    padding: 15px;
-    text-align: left;
-  }
-  
-  .tbody {
-    background-color: #fff;
-  }
-  
-  .tr {
-    border-bottom: 1px solid #ddd;
-  }
-  
-  .td {
-    padding: 15px;
-  }
-  
-  .buttonContainer {
-    display: flex;
-    gap: 10px;
-  }
-  
-  .changeButton {
-    background-color: #d9534f;
-    color: white;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-  }
-  
-  .button {
-    padding: 8px 12px;
-    background-color: #28a745;
-    color: #fff;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-  }
-  
-  .inputContainer {
-    display: flex;
-    gap: 10px;
-  }
-  
-  .input {
-    padding: 8px;
-    font-size: 14px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-  }
-  
-  .cancelButton {
-    padding: 8px 12px;
-    background-color: #007bff;
-    color: #fff;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-  }
-  
+.user-profile-table th {
+  background-color: #007bff;
+  color: #fff;
+}
+
+.user-profile-action-buttons {
+  display: flex;
+  gap: 10px;
+}
+
+.change-field-button,
+.save-button,
+.cancel-button {
+  padding: 8px 12px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.change-field-button {
+  background-color: #28a745;
+  color: #fff;
+}
+
+.save-button {
+  background-color: #007bff;
+  color: #fff;
+}
+
+.cancel-button {
+  background-color: #d9534f;
+  color: #fff;
+}
+
+.input-container {
+  display: flex;
+  gap: 10px;
+}
+
+.input-field {
+  padding: 8px;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
