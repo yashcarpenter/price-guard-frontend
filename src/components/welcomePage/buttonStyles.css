@@ -29,9 +29,9 @@
   cursor: pointer;
 }
 
-.buttonHover {
+.addOrRemoveProducts:hover {
   color: white;
-  width: 10px;
+  /* width: 10px; */
   box-shadow: 0 0 20px rgba(104, 85, 224, 0.6);
   background-color: rgba(104, 85, 224, 1);
 }
@@ -45,7 +45,7 @@
   border: 1px solid rgba(104, 85, 224, 1);
 }
 
-button:hover {
+.signin:hover, .signup:hover {
   color: white;
   box-shadow: 0 0 20px rgba(104, 85, 224, 0.6);
   background-color: rgba(104, 85, 224, 1);
