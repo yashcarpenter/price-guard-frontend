@@ -56,7 +56,7 @@ const SignupPage = () => {
     <div style={{height:'85vh', display:'grid', alignContent:'center', justifyContent:'center'}}>
       <div className="signup-container" style={styles.signupContainer}>
         <h1 style={styles.header}>Register</h1>
-        <form onSubmit={handleSubmit} className="signup-form" style={styles.signupForm}>
+        <form onSubmit={handleSubmit} style={styles.signupForm}>
           <div className="form-group" style={styles.formGroup}>
             <label style={styles.label}>Username:</label>
             <input style={styles.input} type="text" name="userName" value={userDto.userName} onChange={handleChange} required />

@@ -1,0 +1,101 @@
+.signup-outer-container {
+    height: 90vh;
+    width: 100vw;
+    background: hsl(218deg 50% 91%);
+    display: grid;
+    justify-content: center;
+    align-items: center;
+} 
+.signup-div{
+    height: 70vh;
+    width: 400px;
+    background: hsl(209.4deg 100% 98.11%);
+    border-radius: 30px;
+	box-shadow: 0 0 2em hsl(231deg 62% 94%);
+    padding: 2em;
+	display: flex;
+	flex-direction: column;
+}
+.signup-heading-div{
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    margin: 7vh;
+}
+.signin-heading{
+    display: grid;
+    justify-content: center;
+    align-items: center;
+}
+#singUp-form{
+    display: flex;
+	flex-direction: column;
+    margin-top: 5vh;
+}
+
+#email, #password {
+    background: hsl(0deg 0% 100%);
+    box-shadow: 0 0 2em hsl(231deg 62% 94%);
+    padding: 1em;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5em;
+    border-radius: 20px;
+    color: hsl(0deg 0% 30%);
+    margin: 20px;
+  }
+
+input {
+    outline: none;
+    border: none;
+}
+
+/* input::placeholder {
+    color: hsl(0deg 0% 0%);
+    font-size: 0.9em;
+} */
+
+::placeholder {
+    color: #999; /* Example color */
+  }
+  
+/* Style the placeholder text for a specific input */
+#myInput::placeholder {
+color: #ccc; /* Example color */
+}
+
+ion-icon {
+    color: hsl(0deg 0% 30%);
+    margin-bottom: -.2em;
+}
+.sec-2 {
+    display: flex;
+    gap: 0.5em;
+    align-items: center;
+}
+
+.signin-submit-button {
+    padding: 1em;
+    background: hsl(233deg 36% 38%);
+    color: hsl(0 0 100);
+    border: none;
+    border-radius: 30px;
+    font-weight: 600;
+    margin: 20px;
+}
+
+.signin-signup-div{
+    display: grid;
+    justify-content: center;
+    align-items: center;
+}
+
+.signin-signup-button{
+    color: #464646;
+    background: none;
+    border: none;
+    margin: auto;
+
+    border: none;
+    text-decoration: none; 
+}
