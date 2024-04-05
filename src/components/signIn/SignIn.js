@@ -1,5 +1,5 @@
 import React, { useState, useContext } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import UserContext from '../../context/UserContext';
 import './signIn.css';
 
@@ -71,6 +71,11 @@ const SignIn = () => {
             </div>
           </div>
           <button className="signin-submit-button" type="submit">Login</button>
+          <div className='signin-signup-div'>
+            <Link to="/signup">
+              <button className='signin-signup-button'>Signup</button>
+            </Link>
+          </div>
         </form>
         {showPopup && (
           <div style={popupStyles}>
