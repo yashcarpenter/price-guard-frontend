@@ -1,24 +1,25 @@
 import React, { useState, useContext } from 'react';
-import UserDataContext from '../context/userDataContext';
+import UserContext from '../context/UserContext';
+import PleaseLogin from './dialougeBox/PleaseLogin';
 
 const AddProduct = ({ onSubmit = () => {} }) => {
   const [productName, setProductName] = useState('');
-  const [productURL, setProductURL] = useState('');
+  const [productASIN, setProductASIN] = useState('');
   const [limitPrice, setLimitPrice] = useState('');
   const [userEmail, setUserEmail] = useState('');
 
-  const userData = useContext(UserDataContext);
+  const { data, updateData } = useContext(UserContext);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
+  
     const productData = {
-      url: productURL,
-      productName,
+      productName: productName,
+      productAsin: productASIN,
       limitPrice: parseFloat(limitPrice),
-      userName: userData.data.userName
+      userEmail: data.email
     };
-
+  
     try {
       // Make the API call
       const response = await fetch('http://localhost:8081/api/product/add', {
@@ -28,7 +29,7 @@ const AddProduct = ({ onSubmit = () => {} }) => {
         },
         body: JSON.stringify(productData),
       });
-
+  
       // Check if the request was successful
       if (response.ok) {
         // Call the onSubmit prop with the form data
@@ -37,12 +38,11 @@ const AddProduct = ({ onSubmit = () => {} }) => {
         } else {
           console.error('onSubmit is not a function');
         }
-
+  
         // Reset the form fields after successful submission
         setProductName('');
-        setProductURL('');
+        setProductASIN('');
         setLimitPrice('');
-        setUserEmail('');
       } else {
         console.error('Failed to add product. HTTP status:', response.status);
       }
@@ -50,7 +50,9 @@ const AddProduct = ({ onSubmit = () => {} }) => {
       console.error('Error while adding product:', error);
     }
   };
-
+  if(!data.isLoggedIn){
+    return <PleaseLogin/>;
+  }
   return (
     <div style={{ height: '70vh', margin:'5vh', textAlign: 'center', color: '#333' }}>
       <h2 style={{margin: '10vh'}}>Add a New Product</h2>
@@ -66,12 +68,12 @@ const AddProduct = ({ onSubmit = () => {} }) => {
           />
         </label>
         <label style={{ marginBottom: '10px', fontWeight: 'bold' }}>
-          Product URL:
+          Product ASIN:
           <input
             style={{ width: '100%', padding: '8px', marginBottom: '15px', border: '1px solid #ccc', borderRadius: '4px', boxSizing: 'border-box' }}
             type="text"
-            value={productURL}
-            onChange={(e) => setProductURL(e.target.value)}
+            value={productASIN}
+            onChange={(e) => setProductASIN(e.target.value)}
             required
           />
         </label>
@@ -82,16 +84,6 @@ const AddProduct = ({ onSubmit = () => {} }) => {
             type="number"
             value={limitPrice}
             onChange={(e) => setLimitPrice(e.target.value)}
-            required
-          />
-        </label>
-        <label style={{ marginBottom: '10px', fontWeight: 'bold' }}>
-          User Email:
-          <input
-            style={{ width: '100%', padding: '8px', marginBottom: '15px', border: '1px solid #ccc', borderRadius: '4px', boxSizing: 'border-box' }}
-            type="email"
-            value={userEmail}
-            onChange={(e) => setUserEmail(e.target.value)}
             required
           />
         </label>

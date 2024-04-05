@@ -12,10 +12,12 @@ import {
   Link,
 } from "react-router-dom";
 import AboutCreator from './components/AboutCreator' ;
-import RemoveProduct from './components/RemoveProduct';
-import UserProfile from './components/UserProfile';
+import ProductList from './components/ProductList';
+// import UserProfile from './components/UserProfile';
 import SignupPage from './components/SignUp';
-import SignIn from './components/SignIn';
+import UserProfile from './components/userProfile/UserProfile';
+import PriceGraph from './components/ProductGraph';
+import SignIn from './components/signIn/SignIn';
 
 const router = createBrowserRouter([
   {
@@ -39,13 +41,16 @@ const router = createBrowserRouter([
         element: <WelcomePage />,
       },{
         path: "/removeproduct",
-        element: <RemoveProduct/>,
+        element: <ProductList/>,
       },{
         path: "/userprofile",
         element: <UserProfile/>,
       },{
         path: "/signup",
         element: <SignupPage/>,
+      },{
+        path: "/graph",
+        element: <PriceGraph/>,
       }
     ],
   },
@@ -62,3 +67,22 @@ root.render(
 // to log results (for example: reportWebVitals(console.log))
 // or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
 reportWebVitals();
+
+// import React from 'react';
+// import ReactDOM from 'react-dom';
+// import App from './App';
+// import { BrowserRouter as Router } from 'react-router-dom';
+
+// // Import createRoot from react-dom/client
+// import { createRoot } from 'react-dom/client';
+
+// // Use createRoot to render your app
+// createRoot(document.getElementById('root')).render(
+//   <Router>
+//     <App />
+//   </Router>
+// );
+
+
+
+

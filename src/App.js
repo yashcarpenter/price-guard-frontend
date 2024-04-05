@@ -1,6 +1,6 @@
 import './App.css';
-import Header from './components/Header'
-import Footer from './components/Footer'
+import Header from './components/header/Header'
+// import Footer from './components/footer/Footer'
 import { Outlet } from 'react-router-dom';
 import UserDataContext from './context/userDataContext';
 
@@ -10,10 +10,12 @@ function App() {
     <UserDataContext>
       <Header/>
       <Outlet/>
-      <Footer/>
+      {/* <Footer/> */}
     </UserDataContext>
     </>
   );
 }
 
 export default App;
+
+

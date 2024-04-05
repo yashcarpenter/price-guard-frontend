@@ -1,8 +1,12 @@
-import React from 'react';
-// import './buttonStyles.css';
+import React, {useContext} from 'react';
 import { Link } from "react-router-dom";
+import UserContext from '../../context/UserContext';
+import './buttonStyles.css';
 
 function WelcomePage() {
+
+  const {data} = useContext(UserContext);
+
   return (
     <div
       style={{
@@ -26,13 +30,26 @@ function WelcomePage() {
         Discover a smarter way to shop online with Price Guard. We're here to make your online shopping experience more rewarding.
         </p>
       </div>
-      <div style={{display:'grid', justifyContent:"center", alignContent:'center'}}>
-      <Link to="/signin">
-        <button style={styles.signin}>SignIn</button>
-      </Link>
-      <Link to="/signup">
-        <button style={styles.signup}>SignUp</button>
-      </Link>
+      <div >
+          {!data.isLoggedIn? (
+            <div style={{display:'grid', justifyContent:"center", alignContent:'center'}}>
+            <Link to="/signin">
+              <button className='signin'>Login</button>
+            </Link>
+            <Link to="/signup">
+              <button className='signup'>Register</button>
+            </Link>
+            </div>
+            ) : (
+              <div style={{display:'grid', justifyContent:"center", alignContent:'center'}}>
+                <Link to="/addproduct">
+                  <button className='addOrRemoveProducts'>Add Product</button>
+                </Link>
+                <Link to="/removeproduct">
+                  <button className='addOrRemoveProducts'>Remove Product</button>
+                </Link>
+              </div>
+          )}
       </div>
       <div style={{display:'grid', alignItems:'center', justifyContent:'center', width:'70vw'}}>
         <p>
@@ -55,31 +72,4 @@ function WelcomePage() {
   );
 }
 
-export default WelcomePage
-
-const styles = {
-  signin: {
-    color: 'rgb(104, 85, 224)',
-    backgroundColor: 'rgba(255, 255, 255, 1)',
-    border: '1px solid rgba(104, 85, 224, 1)',
-    margin: '5px',
-    padding: '10px 15px',
-    borderRadius: '4px',
-    cursor: 'pointer'
-  },
-  signup:{ 
-    color:'white',
-    backgroundColor: 'rgba(104, 85, 224, 1)', 
-    margin:'5px',
-    color: 'white', 
-    padding: '10px 15px', 
-    border: 'none', 
-    borderRadius: '4px', 
-    cursor: 'pointer' },
-  buttonHover: {
-    color: 'white',
-    width: '10px',
-    boxShadow: '0 0 20px rgba(104, 85, 224, 0.6)',
-    backgroundColor: 'rgba(104, 85, 224, 1)'
-  }
-}
+export default WelcomePage;
