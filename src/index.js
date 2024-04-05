@@ -41,7 +41,7 @@ const router = createBrowserRouter([
         path: "",
         element: <WelcomePage />,
       },{
-        path: "/removeproduct",
+        path: "/productlist",
         element: <ProductList/>,
       },{
         path: "/userprofile",

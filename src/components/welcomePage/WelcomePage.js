@@ -45,7 +45,7 @@ function WelcomePage() {
                 <Link to="/addproduct">
                   <button className='addOrRemoveProducts'>Add Product</button>
                 </Link>
-                <Link to="/removeproduct">
+                <Link to="/productlist">
                   <button className='addOrRemoveProducts'>Remove Product</button>
                 </Link>
               </div>

@@ -29,7 +29,7 @@ function Header() {
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="me-auto">
               <Nav.Link as={Link} to="/addproduct" className="buttons">Add Product</Nav.Link>
-              <Nav.Link as={Link} to="/removeproduct" className="buttons">Product List</Nav.Link>
+              <Nav.Link as={Link} to="/productlist" className="buttons">Product List</Nav.Link>
               <Nav.Link as={Link} to="/userprofile" className="buttons">User Profile</Nav.Link>
               {/* <Nav.Link as={Link} to="/graph" className="buttons">Graph</Nav.Link> */}
             </Nav>

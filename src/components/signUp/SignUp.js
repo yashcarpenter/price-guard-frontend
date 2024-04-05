@@ -42,6 +42,7 @@ const SignupPage = () => {
       .then((response) => {
         if (response.ok) {
           setSuccessMessage('User registered successfully!');
+          // setUserDto[''];
         } else {
           return response.text();
         }
@@ -56,37 +57,38 @@ const SignupPage = () => {
   };
 
   return (
-    <div id='signup-outer-container'>
-        <div id='signup-div'>
-        <div className='signup-heading-div'><h2 className='signup-heading'>Signup</h2></div>
-        <form id='singup-form' onSubmit={handleSubmit}>
-          <div className='signup-input'>
-          <label htmlFor="email">Username</label>
-            <div className="sec-2">
-                <input
-                placeholder="Username@gmail.com" 
-                type="text" 
-                name="userName" 
-                value={userDto.userName} 
-                onChange={handleChange} 
-                required />
+    <div className='signup-outer-container'>
+        <div className='signup-div'>
+        <div className='signup-heading-div'><h2 className='signup-heading'>Register</h2></div>
+        <form className='singup-form' onSubmit={handleSubmit}>
+          <div className='signup-input-div'>
+            <label htmlFor="password">Email</label>
+            <div className="signup-form-input">
+            <input
+              placeholder="username@gmail.com"
+              type="email" 
+              name="email" 
+              value={userDto.email} 
+              onChange={handleChange} 
+              required
+            />
             </div>
           </div>
-          <div className='signup-input'>
+          <div className='signup-input-div'>
           <label htmlFor="firstname">First Name</label>
-            <div className="sec-2">
+            <div className="signup-form-input">
             <input
                 placeholder="Yash" 
                 type="text" 
-                name="firstname" 
+                name="firstName" 
                 value={userDto.firstName} 
                 onChange={handleChange} 
                 required />
             </div>
           </div>
-          <div className='signup-input'>
+          <div className='signup-input-div'>
           <label htmlFor="lastname">Last Name</label>
-            <div className="sec-2">
+            <div className="signup-form-input">
             <input
               placeholder="Carpenter"
               type="text" 
@@ -97,9 +99,9 @@ const SignupPage = () => {
             />
             </div>
           </div>
-          <div className='signup-input'>
+          <div className='signup-input-div'>
           <label htmlFor="password">Mobile Number</label>
-            <div className="sec-2">
+            <div className="signup-form-input">
             <input
               placeholder="Mobile Number"
               type="text" 
@@ -110,22 +112,21 @@ const SignupPage = () => {
             />
             </div>
           </div>
-          <div className='signup-input'>
-          <label htmlFor="password">Email</label>
-            <div className="sec-2">
-            <input
-              placeholder="············"
-              type="email" 
-              name="email" 
-              value={userDto.email} 
-              onChange={handleChange} 
-              required
-            />
+          <div className='signup-input-div'>
+          <label htmlFor="email">Username</label>
+            <div className="signup-form-input">
+                <input
+                placeholder="yashcarpenter" 
+                type="text" 
+                name="userName" 
+                value={userDto.userName} 
+                onChange={handleChange} 
+                required />
             </div>
           </div>
-          <div className='signup-input'>
+          <div className='signup-input-div'>
           <label htmlFor="password">Password</label>
-            <div className="sec-2">
+            <div className="signup-form-input">
             <input
               placeholder="············"
               type="password" 
@@ -136,17 +137,29 @@ const SignupPage = () => {
             />
             </div>
           </div>
-          <button className="signup-submit-button" type="submit">Login</button>
-          <div className='signup-signup-div'>
-            <Link to="/signup">
-              <button className='signup-signup-button'>Signup</button>
+          <div className='signup-submit-div'>
+          <button className="signup-submit-button" type="submit">Regsiter</button>
+          </div>
+          <div className='signup-signin-div'>
+            <Link to="/signin">
+              <button className='signup-signin-button'>Login</button>
             </Link>
           </div>
         </form>
+        {errorMessage && <p className="error-message" style={styles.errorMessage}>{errorMessage}</p>}
+        {successMessage && <p className="success-message" style={styles.successMessage}>{successMessage}</p>}
         </div>
     </div>
   );
 };
 
+const styles = {
+  errorMessage: {
+    color: '#d9534f',
+  },
+  successMessage: {
+    color: '#5cb85c',
+  },
+};
 
 export default SignupPage;

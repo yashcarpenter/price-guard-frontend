@@ -1,8 +1,10 @@
 import React, { useState, useContext } from 'react';
 import UserContext from '../context/UserContext';
 import PleaseLogin from './dialougeBox/PleaseLogin';
+import { useNavigate, Link } from 'react-router-dom';
 
 const AddProduct = ({ onSubmit = () => {} }) => {
+  const navigate = useNavigate();
   const [productName, setProductName] = useState('');
   const [productASIN, setProductASIN] = useState('');
   const [limitPrice, setLimitPrice] = useState('');
@@ -43,6 +45,7 @@ const AddProduct = ({ onSubmit = () => {} }) => {
         setProductName('');
         setProductASIN('');
         setLimitPrice('');
+        navigate('/productlist');
       } else {
         console.error('Failed to add product. HTTP status:', response.status);
       }
