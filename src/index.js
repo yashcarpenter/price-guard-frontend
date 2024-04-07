@@ -3,7 +3,6 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import AddProduct from './components/addProduct/AddProduct';
-// import AddProduct from './components/AddProduct';
 import WelcomePage from "./components/welcomePage/WelcomePage";
 import reportWebVitals from './reportWebVitals';
 import {
@@ -14,11 +13,9 @@ import {
 } from "react-router-dom";
 import AboutCreator from './components/AboutCreator' ;
 import ProductList from './components/ProductList';
-// import UserProfile from './components/UserProfile';
 import UserProfile from './components/userProfile/UserProfile';
 import PriceGraph from './components/ProductGraph';
 import SignIn from './components/signIn/SignIn';
-// import SignupPage from './components/SignUp';
 import SignupPage from './components/signUp/SignUp';
 
 const router = createBrowserRouter([

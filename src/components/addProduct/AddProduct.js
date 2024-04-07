@@ -1,5 +1,5 @@
 import React, { useState, useContext } from 'react';
-import UserContext from '../../context/UserContext';
+import AuthContext from '../../context/authContext/AuthContext';
 import PleaseSignIn from '../dialougeBox/PleaseLogin';
 import { useNavigate, Link } from 'react-router-dom';
 import Sidebar from './AddProductSidebar';
@@ -12,7 +12,7 @@ const AddProduct = ({ onSubmit = () => {} }) => {
   const [limitPrice, setLimitPrice] = useState('');
   const [userEmail, setUserEmail] = useState('');
 
-  const { data, updateData } = useContext(UserContext);
+  const { data, updateData } = useContext(AuthContext);
 
   if(!data.isLoggedIn){
     return <PleaseSignIn/>;

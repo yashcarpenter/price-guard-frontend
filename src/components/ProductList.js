@@ -1,12 +1,12 @@
 import React, { useState, useEffect, useContext } from 'react';
-import UserContext from '../context/UserContext';
+import AuthContext from '../context/authContext/AuthContext';
 import PleaseLogin from './dialougeBox/PleaseLogin';
 import { useNavigate } from 'react-router-dom';
 
 const ProductList = () => {
   const navigate = useNavigate();
   const [products, setProducts] = useState([]);
-  const { data, asin, updateAsin } = useContext(UserContext);
+  const { data, asin, updateAsin } = useContext(AuthContext);
 
   const formatDateTime = (dateTime) => {
     return new Date(dateTime).toLocaleDateString('en-US', {

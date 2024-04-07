@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useContext } from 'react';
-import UserContext from '../context/UserContext';
+import AuthContext from '../context/authContext/AuthContext';
 import PleaseLogin from './dialougeBox/PleaseLogin';
 
 const UserProfile = () => {
@@ -7,7 +7,7 @@ const UserProfile = () => {
   const [error, setError] = useState(null);
   const [responseData, setResponseData] = useState(null);
 
-  const { data, updateData } = useContext(UserContext);
+  const { data, updateData } = useContext(AuthContext);
 
   if(!data.isLoggedIn){
     return <PleaseLogin/>;

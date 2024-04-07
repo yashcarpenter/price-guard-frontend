@@ -5,10 +5,10 @@ import Navbar from "react-bootstrap/Navbar";
 import { Link, useNavigate } from 'react-router-dom';
 import './header.css';
 import logo from '../../resources/black_logo.png';
-import UserContext from '../../context/UserContext';
+import AuthContext from '../../context/authContext/AuthContext';
 
 function Header() {
-  const { data, updateData } = useContext(UserContext);
+  const { data, updateData } = useContext(AuthContext);
   const navigate = useNavigate();
   const handleSignOut = () =>{
     const nullData = '';
