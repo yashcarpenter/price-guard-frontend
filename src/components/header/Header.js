@@ -2,16 +2,18 @@ import React, { useContext } from 'react';
 import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import './header.css';
 import logo from '../../resources/black_logo.png';
 import UserContext from '../../context/UserContext';
 
 function Header() {
   const { data, updateData } = useContext(UserContext);
+  const navigate = useNavigate();
   const handleSignOut = () =>{
     const nullData = '';
     updateData(nullData, nullData, nullData, false);
+    navigate('/');
   }
   return (
     <div className="header">

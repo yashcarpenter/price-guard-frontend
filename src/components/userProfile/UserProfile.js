@@ -62,9 +62,13 @@ const UserProfile = () => {
     return <p>Loading...</p>;
   }
 
-  if (error) {
+  if(!data.isLoggedIn){
     return <PleaseSignIn/>;
   }
+
+  // if (error) {
+  //   return <PleaseSignIn/>;
+  // }
 
   return (
     <div className="outer-container-1">

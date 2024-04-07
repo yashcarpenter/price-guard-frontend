@@ -9,6 +9,10 @@ const UserProfile = () => {
 
   const { data, updateData } = useContext(UserContext);
 
+  if(!data.isLoggedIn){
+    return <PleaseLogin/>;
+  }
+
   useEffect(() => {
     fetch(`http://localhost:8081/api/user/getUser/${data.email}`)
       .then(response => {
@@ -62,9 +66,9 @@ const UserProfile = () => {
     return <p>Loading...</p>;
   }
 
-  if (error) {
-    return <PleaseLogin/>;
-  }
+  // if (error) {
+  //   return <PleaseLogin/>;
+  // }
 
   return (
     <div style={{ height: '85vh' }}>
