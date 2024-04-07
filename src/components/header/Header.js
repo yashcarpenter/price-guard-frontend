@@ -2,16 +2,18 @@ import React, { useContext } from 'react';
 import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import './header.css';
 import logo from '../../resources/black_logo.png';
-import UserContext from '../../context/UserContext';
+import AuthContext from '../../context/authContext/AuthContext';
 
 function Header() {
-  const { data, updateData } = useContext(UserContext);
+  const { data, updateData } = useContext(AuthContext);
+  const navigate = useNavigate();
   const handleSignOut = () =>{
     const nullData = '';
     updateData(nullData, nullData, nullData, false);
+    navigate('/');
   }
   return (
     <div className="header">
@@ -29,7 +31,7 @@ function Header() {
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="me-auto">
               <Nav.Link as={Link} to="/addproduct" className="buttons">Add Product</Nav.Link>
-              <Nav.Link as={Link} to="/removeproduct" className="buttons">Product List</Nav.Link>
+              <Nav.Link as={Link} to="/productlist" className="buttons">Product List</Nav.Link>
               <Nav.Link as={Link} to="/userprofile" className="buttons">User Profile</Nav.Link>
               {/* <Nav.Link as={Link} to="/graph" className="buttons">Graph</Nav.Link> */}
             </Nav>

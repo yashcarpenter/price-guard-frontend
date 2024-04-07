@@ -1,11 +1,12 @@
 import React, {useContext} from 'react';
 import { Link } from "react-router-dom";
-import UserContext from '../../context/UserContext';
+import AuthContext from '../../context/authContext/AuthContext';
 import './buttonStyles.css';
 
 function WelcomePage() {
 
-  const {data} = useContext(UserContext);
+  const {data} = useContext(AuthContext);
+  console.log(data);
 
   return (
     <div
@@ -45,7 +46,7 @@ function WelcomePage() {
                 <Link to="/addproduct">
                   <button className='addOrRemoveProducts'>Add Product</button>
                 </Link>
-                <Link to="/removeproduct">
+                <Link to="/productlist">
                   <button className='addOrRemoveProducts'>Remove Product</button>
                 </Link>
               </div>

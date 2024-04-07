@@ -1,9 +1,9 @@
 import React, { useState, useEffect, useContext } from 'react';
-import UserContext from '../context/UserContext';
+import AuthContext from '../context/authContext/AuthContext';
 import Chart from 'chart.js/auto';
 
 function PriceChart() {
-  const { asin } = useContext(UserContext);
+  const { asin } = useContext(AuthContext);
 
   useEffect(() => {
     const fetchData = async () => {

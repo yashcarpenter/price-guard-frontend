@@ -2,16 +2,16 @@ import './App.css';
 import Header from './components/header/Header'
 // import Footer from './components/footer/Footer'
 import { Outlet } from 'react-router-dom';
-import UserDataContext from './context/userDataContext';
+import AuthDataContext from './context/authContext/AuthDataContext';
 
 function App() {
   return (
     <>
-    <UserDataContext>
+    <AuthDataContext>
       <Header/>
       <Outlet/>
       {/* <Footer/> */}
-    </UserDataContext>
+    </AuthDataContext>
     </>
   );
 }

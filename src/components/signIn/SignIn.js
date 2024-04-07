@@ -1,6 +1,6 @@
 import React, { useState, useContext } from 'react';
-import { useNavigate } from 'react-router-dom';
-import UserContext from '../../context/UserContext';
+import { useNavigate, Link } from 'react-router-dom';
+import AuthContext from '../../context/authContext/AuthContext';
 import './signIn.css';
 
 const SignIn = () => {
@@ -10,7 +10,7 @@ const SignIn = () => {
   const [error, setError] = useState('');
   const [showPopup, setShowPopup] = useState(false);
 
-  const { data, updateData } = useContext(UserContext);
+  const { data, updateData } = useContext(AuthContext);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -71,6 +71,11 @@ const SignIn = () => {
             </div>
           </div>
           <button className="signin-submit-button" type="submit">Login</button>
+          <div className='signin-signup-div'>
+            <Link to="/signup">
+              <button className='signin-signup-button'>Register</button>
+            </Link>
+          </div>
         </form>
         {showPopup && (
           <div style={popupStyles}>

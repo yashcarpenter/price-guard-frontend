@@ -1,6 +1,6 @@
 import './userProfile.css';
 import React, { useState, useEffect, useContext } from 'react';
-import UserContext from '../../context/UserContext';
+import AuthContext from '../../context/authContext/AuthContext';
 import PleaseSignIn from '../dialougeBox/PleaseLogin';
 
 const UserProfile = () => {
@@ -8,7 +8,7 @@ const UserProfile = () => {
   const [error, setError] = useState(null);
   const [responseData, setResponseData] = useState(null);
 
-  const { data, updateData } = useContext(UserContext);
+  const { data, updateData } = useContext(AuthContext);
 
   useEffect(() => {
     fetch(`http://localhost:8081/api/user/getUser/${data.email}`)
@@ -62,9 +62,13 @@ const UserProfile = () => {
     return <p>Loading...</p>;
   }
 
-  if (error) {
+  if(!data.isLoggedIn){
     return <PleaseSignIn/>;
   }
+
+  // if (error) {
+  //   return <PleaseSignIn/>;
+  // }
 
   return (
     <div className="outer-container-1">
