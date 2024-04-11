@@ -15,21 +15,27 @@ function Header() {
     updateData(nullData, nullData, nullData, false);
     navigate('/');
   }
+  const handleSignIn = ()=>{
+    navigate('/signin');
+  }
   return (
-    <div className="header">
-      <Navbar expand="lg">
-        <div style={styles.container}>
+    <div className="header-main-div">
+      <div className='header-logo-main-div'>
+        <div className='logo-div'>
           <div style={styles.logo}>
           <a href="/">
             <img src={logo} alt="Logo" style={styles.logoImage} />
           </a>
           </div>
         </div>
-        <Container>
-          <Navbar.Brand as={Link} to="/" className="buttons">Home</Navbar.Brand>
-          <Navbar.Toggle aria-controls="basic-navbar-nav" />
+      </div>
+      <div className='header-navbar-main-div'>
+      <Navbar expand="lg" >
+        <Container className='header-menu-main-div'>
+        <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="me-auto">
+              <Nav.Link as={Link} to="/" className="buttons" >Home</Nav.Link>
               <Nav.Link as={Link} to="/addproduct" className="buttons">Add Product</Nav.Link>
               <Nav.Link as={Link} to="/productlist" className="buttons">Product List</Nav.Link>
               <Nav.Link as={Link} to="/userprofile" className="buttons">User Profile</Nav.Link>
@@ -37,16 +43,15 @@ function Header() {
             </Nav>
           </Navbar.Collapse>
         </Container>
-        <Container>
-          <div style={{ marginLeft: '30vw' }}>
-            {data.isLoggedIn? (
-              <button onClick={handleSignOut} style={styles.signout}>Log Out</button>
-              ) : (
-              <Nav.Link as={Link} to="/signin" className="SignInButton">Login</Nav.Link>
-            )}
-          </div>
-        </Container>
       </Navbar>
+      </div>
+      {/* <div className='header-login-logout-div'>
+        {data.isLoggedIn? (
+          <button onClick={handleSignOut} style={styles.signout}>Log Out</button>
+          ) : (
+              <button onClick={handleSignIn} style={styles.signout}>Login</button>
+        )}
+      </div> */}
     </div>
   );
 }
@@ -59,7 +64,7 @@ const styles = {
     alignItems: 'center',
   },
   logoImage: {
-    width: '100px',
+    width: '10vh',
     marginLeft: '10vw',
   },
   signout: {

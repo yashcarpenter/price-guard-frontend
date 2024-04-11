@@ -1,16 +1,54 @@
-/* footer.css */
+.footer-main-div{
+  display: grid;
+  justify-content: center;
+  align-items: center;
+  height: 70px;
+  position: sticky;
+  bottom: 0%;
+  z-index: 100;
+  background: white;
+  box-shadow: 0px -2px 4px rgba(0, 0, 0, 0.2) ;
+}
 
-.logOutButton {
-    color: #fff;
-    background-color: #d9534f; /* Red color for button background */
-    border: none;
-    padding: 10px 20px;
-    border-radius: 4px;
+.buttons {
+  color: black;
+  margin: 10px;
+  padding: 10px;
+}
+
+.SignInButton{
+  display: grid;
+  color: black;
+  margin: 10px;
+  padding: 10px;
+}
+
+.footer-login-logout-div{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  left: 0%;
+}
+
+.footer-signin-signout-button{
+  color: black;
+  background-color: white;
+  border: none;
+  margin: 10px;
+  padding: 10px;
+  cursor: pointer;
+  display: grid;
+}
+
+@media only screen and (max-width: 768px) {
+  .footer-main-div{
+    height: 50px;
+  }
+  .footer-signin-signout-button{
+    margin: 0px;
+    padding: 0px;
     cursor: pointer;
-    transition: background-color 0.3s ease; /* Smooth transition for hover effect */
+    display: grid;
   }
   
-  .logOutButton:hover {
-    background-color: #c9302c; /* Darker red color on hover */
-  }
-  
+}

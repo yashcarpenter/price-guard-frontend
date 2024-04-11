@@ -100,5 +100,13 @@ color: #ccc; /* Example color */
 @media (max-width: 600px) {
     #singIn-div {
         width: 90%;
+        min-width: 300px;
     }
+    .signin-heading-div{
+        margin: auto;
+    }
+
+    #email, #password {
+        margin: 15px 0 15px 0;
+      }
 }

@@ -1,0 +1,221 @@
+.welcomepage-outer-container {
+  display: grid;
+  justify-content: center;
+  height: 90vh;
+}
+
+.welcomepage-inner-container{
+  display: grid;
+  align-items: center;
+  justify-content: center;
+  width: 70vw;
+}
+
+.welcomepage-title {
+  display: flex;
+  justify-content: center;
+  margin: 40px 0 40px 0;
+}
+
+.welcomepage-upper-content-outer {
+  display: grid;
+  align-items: center;
+  justify-content: center;
+}
+
+.welcomepage-upper-content-para{
+  display: grid;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.welcomepage-button-outer-container {
+  display: grid;
+  justify-content: center;
+  align-content: center;
+}
+
+.welcomepage-button-inner-container {
+  display: grid;
+  justify-content: center;
+  align-content: center;
+}
+
+.welcomepage-signin-button {
+  color: rgb(104, 85, 224);
+  background-color: rgba(255, 255, 255, 1);
+  border: 1px solid rgba(104, 85, 224, 1);
+  margin: 5px;
+  padding: 10px 15px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.welcomepage-signup-button {
+  color: white;
+  background-color: rgba(104, 85, 224, 1);
+  margin: 5px;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.welcomepage-addOrRemoveProducts{
+  color: rgb(104, 85, 224);
+  background-color: rgba(255, 255, 255, 1);
+  border: 1px solid rgba(104, 85, 224, 1);
+  margin: 5px;
+  padding: 10px 15px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.welcomepage-addOrRemoveProducts:hover {
+  color: white;
+  /* width: 10px; */
+  box-shadow: 0 0 20px rgba(104, 85, 224, 0.6);
+  background-color: rgba(104, 85, 224, 1);
+}
+  
+.log {
+  color: rgb(104, 85, 224);
+  background-color: rgba(255, 255, 255, 1);
+  border: 1px solid rgba(104, 85, 224, 1);
+}
+
+.signin:hover, .signup:hover {
+  color: white;
+  box-shadow: 0 0 20px rgba(104, 85, 224, 0.6);
+  background-color: rgba(104, 85, 224, 1);
+}
+
+.welcomepage-description {
+  display: grid;
+  align-items: center;
+  justify-content: center;
+  width: 70vw;
+  text-align: center;
+}
+
+.welcomepage-footer {
+  display: grid;
+  align-items: center;
+  justify-content: center;
+  margin: 50px;
+}
+
+
+@media only screen and (max-width: 768px) {
+  .welcomepage-outer-container {
+    display: grid;
+    align-items: center;
+    justify-content: center;
+    height: auto;
+    width: 100vw;
+    /* margin: 0 0 60px 0; */
+  }
+  .welcomepage-inner-container{
+    display: grid;
+    align-items: center;
+    justify-content: center;
+    width: 100vw;
+  }
+
+  .welcomepage-title {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 30px 0 30px 0;
+  }
+
+  .welcomepage-upper-content-outer {
+    display: grid;
+    align-items: center;
+    justify-content: center;
+    margin: 10px;
+  }
+  .welcomepage-upper-content-para{
+    display: grid;
+    align-items: center;
+    justify-content: center;
+    word-wrap: break-word;
+  }
+
+  .welcomepage-button-outer-container {
+    display: grid;
+    justify-content: center;
+    align-content: center;
+    margin: 30px 0 30px 0;
+  }
+
+  .welcomepage-description {
+    display: grid;
+    align-items: center;
+    justify-content: center;
+    width: 100vw;
+  }
+
+  .welcomepage-signin-button {
+    color: rgb(104, 85, 224);
+    background-color: rgba(255, 255, 255, 1);
+    border: 1px solid rgba(104, 85, 224, 1);
+    margin: 5px;
+    padding: 10px 15px;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .welcomepage-signup-button {
+    color: white;
+    background-color: rgba(104, 85, 224, 1);
+    margin: 5px;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .welcomepage-addOrRemoveProducts{
+    color: rgb(104, 85, 224);
+    background-color: rgba(255, 255, 255, 1);
+    border: 1px solid rgba(104, 85, 224, 1);
+    margin: 5px;
+    padding: 10px 15px;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .welcomepage-addOrRemoveProducts:hover {
+    color: white;
+    /* width: 10px; */
+    box-shadow: 0 0 20px rgba(104, 85, 224, 0.6);
+    background-color: rgba(104, 85, 224, 1);
+  }
+    
+  .log {
+    color: rgb(104, 85, 224);
+    background-color: rgba(255, 255, 255, 1);
+    border: 1px solid rgba(104, 85, 224, 1);
+  }
+  
+  .signin:hover, .signup:hover {
+    color: white;
+    box-shadow: 0 0 20px rgba(104, 85, 224, 0.6);
+    background-color: rgba(104, 85, 224, 1);
+  }
+  
+  .welcomepage-button-container {
+    display: grid;
+    justify-content: center;
+    align-content: center;
+  }
+  
+  .welcomepage-footer {
+    display: grid;
+    align-items: center;
+    justify-content: center;
+    margin: 50px;
+  }
+}

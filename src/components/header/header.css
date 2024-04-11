@@ -1,9 +1,23 @@
-.header {
+.header-main-div {
+    height: 80px;
+    width: 100vw;
+    display: flex;
+    justify-content: left;
+    align-items: center;
     background-color: white;
     position: sticky;
     top: 0%;
     z-index: 100;
     box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2); /* Adjust the shadow properties here */
+}
+.header-logo-main-div{
+    display: flex;
+}
+
+.header-navbar-main-div{
+    display: grid;
+    justify-content: center;
+    align-items: center;
 }
 
 .buttons {
@@ -12,9 +26,52 @@
     padding: 10px;
 }
 
-.SignInButton {
+.SignInButton{
     display: grid;
     color: black;
     margin: 10px;
     padding: 10px;
+}
+
+.header-login-logout-div{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    left: 0%;
+}
+
+.logo-div{
+    height: 5vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+@media only screen and (max-width: 992px) {
+    .header-main-div {
+        width: 100vw;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: white;
+        position: sticky;
+        top: 0%;
+        z-index: 100;
+        box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2); /* Adjust the shadow properties here */
+    }
+
+    .header-logo-main-div{
+        display: flex;
+        width: 50vw;
+        justify-content: left;
+        align-items: center;
+    }
+
+    .header-navbar-main-div{
+        width: 50vw;
+        display: grid;
+        justify-content: center;
+        align-items: right;
+    }
+    
 }
