@@ -2,11 +2,13 @@ import './userProfile.css';
 import React, { useState, useEffect, useContext } from 'react';
 import AuthContext from '../../context/authContext/AuthContext';
 import PleaseSignIn from '../dialougeBox/PleaseLogin';
+import { useNavigate } from 'react-router-dom';
 
 const UserProfile = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [responseData, setResponseData] = useState(null);
+  const navigate = useNavigate();
 
   const { data, updateData } = useContext(AuthContext);
 
@@ -14,7 +16,8 @@ const UserProfile = () => {
     fetch(`http://localhost:8081/api/user/getUser/${data.email}`)
       .then(response => {
         if (!response.ok) {
-          throw new Error('Please Login');
+          // throw new Error('Please Login');
+          navigate('/');
         }
         return response.json();
       })

@@ -35,24 +35,36 @@ const AuthDataContext = (props) =>{
         localStorage.setItem('userData', JSON.stringify(newData));
     };
 
-    const defaultAsin = {
-        "asin": ""
+    const defaultProductData = {
+        "asin": "",
+        "productName":"",
+        "addedAt":"",
+        "limitPrice":"",
+        "minPriceWasAt":"",
+        "lastPrice":"",
+        "minPrice":""
     };
 
     // Set state for ASIN
-    const [asin, setAsin] = useState(defaultAsin);
+    const [productData, setProductData] = useState(defaultProductData);
 
     // Update ASIN
-    const updateAsin = (asin) => {
-        setAsin(prevData => ({
+    const updateProductData = (asin, productName, addedAt, limitPrice, minPrice, minPriceWasAt, lastPrice) => {
+        setProductData(prevData => ({
             ...prevData,
-            asin: asin
+            asin: asin,
+            productName: productName,
+            addedAt: addedAt,
+            limitPrice: limitPrice,
+            minPriceWasAt: minPriceWasAt,
+            lastPrice: lastPrice,
+            minPrice: minPrice
         }));
     };
 
     // Provide context value
     return(
-        <AuthContext.Provider value={{data, updateData, asin, updateAsin}}>
+        <AuthContext.Provider value={{data, updateData, productData, updateProductData}}>
             {props.children}
         </AuthContext.Provider>
     );

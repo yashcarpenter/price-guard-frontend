@@ -3,6 +3,7 @@
 .outer-container-1 {
   max-width: 800px;
   margin: 0 auto;
+  height: 90vh;
 }
 
 .user-profile-heading {

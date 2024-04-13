@@ -113,5 +113,10 @@
 @media screen and (max-width: 480px) {
     .signup-div {
         width: 95%;
+        min-width: 100vw;
+    }
+
+    .signup-outer-container{
+        background: hsl(218deg 50% 91%);
     }
 }

@@ -1,0 +1,48 @@
+.price-graph-page-main-div {
+    height: 85vh;
+    background: '';
+    display: grid;
+    justify-content: center;
+    align-items: center;
+  }
+  .price-graph-page-middle-div{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .price-graph-from-div{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 20px;
+  }
+
+  .price-graph-to-div{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 20px;
+  }
+  
+  .price-chart-main-div{
+    height: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid black;
+    padding: 5vh;
+  }
+  
+  .price-chart-container {
+    height: 400px;
+    width: 800px;
+  }
+
+  .price-graph-title{
+    display: flex;
+    justify-content: center;
+    /* align-items: center; */
+  }
+
+  

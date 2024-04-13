@@ -1,14 +1,23 @@
 import React, { useState, useEffect, useContext } from 'react';
-import AuthContext from '../context/authContext/AuthContext';
+import AuthContext from '../../context/authContext/AuthContext';
 import Chart from 'chart.js/auto';
+import './priceChart.css'
 
 function PriceChart() {
-  const { asin } = useContext(AuthContext);
-
+  const { productData } = useContext(AuthContext);
+  const currentDate = new Date();
+  const formatDateTime = (dateTime) => {
+    return new Date(dateTime).toLocaleDateString('en-US', {
+      year: 'numeric',
+      month: 'long',
+      day: 'numeric',
+    });
+  };
+  
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch(`http://localhost:8081/api/price/getprices/${asin.asin}`, {
+        const response = await fetch(`http://localhost:8081/api/price/getprices/${productData.asin}`, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
@@ -22,7 +31,7 @@ function PriceChart() {
         const data = await response.json();
 
         // Extract labels and dataset values from the response
-        const labels = data.map(entry => entry.timestamp);
+        const labels = data.map(entry => formatDateTime(entry.timestamp));
         const datasetValues = data.map(entry => entry.price);
 
         // Determine maximum and minimum price values
@@ -100,9 +109,23 @@ function PriceChart() {
   }, []);
 
   return (
-    <div style={{height:'85vh', background: '',display: 'grid', justifyContent: 'center', alignItems:'center' }}>
-      <div style={{ height: '400px', width: '800px' }}> {/* Adjust chart dimensions as needed */}
-        <canvas id="myChart" ></canvas>
+    <div className="price-graph-page-main-div">
+      <div className='price-graph-page-middle-div'>
+      <div className='price-graph-from-div'>
+        <p> <b>From:</b> &nbsp; {formatDateTime(productData.addedAt)}</p>
+      </div>
+      <div className='price-chart-main-div'>
+        <div className="price-chart-container">
+          <canvas id="myChart"></canvas>
+        </div>
+      </div>
+      <div className='price-graph-to-div'>
+        <p><b>To:</b> &nbsp; {formatDateTime(currentDate)}</p></div>
+      </div>
+      <div className='price-graph-title'>
+      <p>
+        <h4><b>{productData.productName} </b> </h4>
+      </p>
       </div>
     </div>
   );
