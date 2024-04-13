@@ -7,7 +7,6 @@ import './WelcomePageStyles.css';
 
 function WelcomePage() {
   const { data } = useContext(AuthContext);
-  console.log(data);
 
   return (
     <div className="welcomepage-outer-container">

@@ -21,7 +21,8 @@ const ProductList = () => {
     })
       .then(response => {
         if (!response.ok) {
-          throw new Error('Please Login');
+          navigate('/');
+          // throw new Error('Please Login');
         }
         return response.json();
       })

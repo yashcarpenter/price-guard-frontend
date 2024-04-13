@@ -22,9 +22,9 @@ const Footer = () => {
     <div className="footer-main-div">
       <div className='footer-login-logout-div'>
         {data.isLoggedIn? (
-          <button onClick={handleSignOut} className='footer-signin-signout-button'>Log Out</button>
+          <button onClick={handleSignOut} className='footer-signout-button'>Log Out</button>
           ) : (
-              <button onClick={handleSignIn} style={styles.signout}>Login</button>
+              <button onClick={handleSignIn} className='footer-signin-button'>Login</button>
         )}
       </div>
     </div>
@@ -32,15 +32,3 @@ const Footer = () => {
 };
 
 export default Footer;
-
-const styles = {
-  signout: {
-    color: 'black',
-    backgroundColor: 'white',
-    border: 'none', 
-    margin: '10px',
-    padding: '10px',
-    cursor: 'pointer',
-    display: 'grid'
-  }
-};

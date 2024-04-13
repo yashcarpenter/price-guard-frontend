@@ -52,6 +52,12 @@
   cursor: pointer;
 }
 
+.welcomepage-signin-button:hover{
+  color: white;
+  box-shadow: 0 0 20px rgba(104, 85, 224, 0.6);
+  background-color: rgba(104, 85, 224, 1);
+}
+
 .welcomepage-signup-button {
   color: white;
   background-color: rgba(104, 85, 224, 1);
@@ -60,6 +66,12 @@
   border: none;
   border-radius: 4px;
   cursor: pointer;
+}
+
+.welcomepage-signup-button:hover{
+  color: white;
+  box-shadow: 0 0 20px rgba(104, 85, 224, 0.6);
+  background-color: rgba(104, 85, 224, 1);
 }
 
 .welcomepage-addOrRemoveProducts{
