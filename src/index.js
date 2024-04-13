@@ -14,7 +14,7 @@ import {
 import AboutCreator from './components/AboutCreator' ;
 import ProductList from './components/ProductList';
 import UserProfile from './components/userProfile/UserProfile';
-import PriceGraph from './components/ProductGraph';
+import PriceChart from './components/priceChart/PriceChart';
 import SignIn from './components/signIn/SignIn';
 import SignupPage from './components/signUp/SignUp';
 
@@ -49,7 +49,7 @@ const router = createBrowserRouter([
         element: <SignupPage/>,
       },{
         path: "/graph",
-        element: <PriceGraph/>,
+        element: <PriceChart/>,
       }
     ],
   },

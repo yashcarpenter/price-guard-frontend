@@ -6,7 +6,7 @@ import { useNavigate } from 'react-router-dom';
 const ProductList = () => {
   const navigate = useNavigate();
   const [products, setProducts] = useState([]);
-  const { data, asin, updateAsin } = useContext(AuthContext);
+  const { data, productData, updateProductData } = useContext(AuthContext);
 
   const formatDateTime = (dateTime) => {
     return new Date(dateTime).toLocaleDateString('en-US', {
@@ -15,7 +15,6 @@ const ProductList = () => {
       day: 'numeric',
     });
   };
-  console.log(asin.asin);
   useEffect(() => {
     fetch(`http://localhost:8081/api/product/${data.email}`, {
       method: 'POST',
@@ -47,8 +46,8 @@ const ProductList = () => {
       .catch(error => console.error('Error removing product:', error));
   };
 
-  const handleGraphOnClick = (asin) =>{
-    updateAsin(asin);
+  const handleGraphOnClick = (asin, productName, addedAt, limitPrice, minPrice, minPriceWasAt, lastPrice) =>{
+    updateProductData(asin, productName, addedAt, limitPrice, minPrice, minPriceWasAt, lastPrice);
     navigate('/graph');
   }
 
@@ -56,7 +55,7 @@ const ProductList = () => {
     return <PleaseLogin />;
   } else {
     return (
-      <div style={{ height: "100vh" }}>
+      <div style={{ minHeight: "100vh" }}>
         <div className="container mt-5">
           <div style={{ display: "grid", alignItems: "center", justifyContent: "center", height: "10vh" }}><h1>Product Table</h1></div>
           <div style={{ display: "grid", alignItems: "center", justifyContent: "center"}}>
@@ -80,7 +79,7 @@ const ProductList = () => {
                   <td>
                     <button
                       className="btn btn-primary"
-                      onClick={() => handleGraphOnClick(product.productAsin)}
+                      onClick={() => handleGraphOnClick(product.productAsin, product.productName, product.addedAt, product.limitPrice, product.minPrice, product.minPriceWasAt, product.lastPrice)}
                     >
                       Graph
                     </button>
