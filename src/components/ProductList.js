@@ -79,7 +79,7 @@ const ProductList = () => {
                   <td>
                     <button
                       className="btn btn-primary"
-                      onClick={() => handleGraphOnClick(product.productAsin, product.productName, product.addedAt, product.limitPrice, product.minPrice, product.minPriceWasAt, product.lastPrice)}
+                      onClick={() => handleGraphOnClick(product.productAsin, product.productName, product.productAddedAt, product.limitPrice, product.minPrice, product.minPriceWasAt, product.lastPrice)}
                     >
                       Graph
                     </button>

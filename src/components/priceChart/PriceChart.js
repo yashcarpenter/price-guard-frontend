@@ -5,7 +5,7 @@ import './priceChart.css'
 
 function PriceChart() {
   const { productData } = useContext(AuthContext);
-
+  const currentDate = new Date();
   const formatDateTime = (dateTime) => {
     return new Date(dateTime).toLocaleDateString('en-US', {
       year: 'numeric',
@@ -109,16 +109,23 @@ function PriceChart() {
   }, []);
 
   return (
-    <div className="price-graph-main-div">
-      <div className='price-graph-title'>
-      <p>
-        <h1>Product Name:</h1> <h2>{productData.productName}</h2>
-      </p>
+    <div className="price-graph-page-main-div">
+      <div className='price-graph-page-middle-div'>
+      <div className='price-graph-from-div'>
+        <p> <b>From:</b> &nbsp; {formatDateTime(productData.addedAt)}</p>
       </div>
-      <div className='price-chart-inner-div'>
+      <div className='price-chart-main-div'>
         <div className="price-chart-container">
           <canvas id="myChart"></canvas>
         </div>
+      </div>
+      <div className='price-graph-to-div'>
+        <p><b>To:</b> &nbsp; {formatDateTime(currentDate)}</p></div>
+      </div>
+      <div className='price-graph-title'>
+      <p>
+        <h4><b>{productData.productName} </b> </h4>
+      </p>
       </div>
     </div>
   );
