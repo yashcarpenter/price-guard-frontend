@@ -4,6 +4,7 @@ import './signUp.css';
 
 
 const SignupPage = () => {
+  const navigate = useNavigate();
   const [userDto, setUserDto] = useState({
     userName: '',
     firstName: '',
@@ -42,7 +43,7 @@ const SignupPage = () => {
       .then((response) => {
         if (response.ok) {
           setSuccessMessage('User registered successfully!');
-          // setUserDto[''];
+          navigate('/');
         } else {
           return response.text();
         }
