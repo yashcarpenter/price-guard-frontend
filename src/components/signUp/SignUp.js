@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
+import AuthContext from '../../context/authContext/AuthContext';
 import './signUp.css';
 
 
@@ -14,6 +15,7 @@ const SignupPage = () => {
     password: '',
   });
 
+  const { data, updateData } = useContext(AuthContext);
   const [errorMessage, setErrorMessage] = useState(null);
   const [successMessage, setSuccessMessage] = useState(null);
 
@@ -43,6 +45,7 @@ const SignupPage = () => {
       .then((response) => {
         if (response.ok) {
           setSuccessMessage('User registered successfully!');
+          updateData(userDto.userName, userDto.password, userDto.email, true);
           navigate('/');
         } else {
           return response.text();
