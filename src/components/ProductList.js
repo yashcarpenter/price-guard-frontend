@@ -16,7 +16,7 @@ const ProductList = () => {
     });
   };
   useEffect(() => {
-    fetch(`http://localhost:8081/api/product/${data.email}`, {
+    fetch(`http://localhost:8081/api/product/get/${data.email}`, {
       method: 'POST',
     })
       .then(response => {
@@ -33,7 +33,7 @@ const ProductList = () => {
   const handleRemoveProduct = (productAsin) => {
     const userEmail = data.email;
     // API call to remove the product with the given productAsin and user email
-    fetch(`http://localhost:8081/api/product/delete/${userEmail}?productAsin=${encodeURIComponent(productAsin)}`, {
+    fetch(`http://localhost:8081/api/product/delete?email=${userEmail}&productAsin=${encodeURIComponent(productAsin)}`, {
       method: 'POST',
     })
       .then(response => {

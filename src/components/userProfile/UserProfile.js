@@ -13,19 +13,14 @@ const UserProfile = () => {
   const { data, updateData } = useContext(AuthContext);
 
   useEffect(() => {
-    fetch(`http://localhost:8081/api/user/getUser/${data.email}`)
-      .then(response => {
-        if (!response.ok) {
-          // throw new Error('Please Login');
-          navigate('/');
-        }
-        return response.json();
-      })
-      .then(data => {
-        if (data) {
-          setResponseData(data);
+    fetch(`http://localhost:8081/api/user/getdetail/${data.email}`)
+      .then(response => response.json())
+      .then(result => {
+        if (result.status === 200) {
+          setResponseData(result.data);
         } else {
-          console.error('Empty response from API');
+          console.error(result.message);
+          // navigate('/');
         }
         setLoading(false);
       })
@@ -34,14 +29,14 @@ const UserProfile = () => {
         setError(error.message);
         setLoading(false);
       });
-  }, [data.email]);
+  }, [data.email, navigate]);
 
   const updateUserField = async (fieldName, newValue) => {
     try {
       const params = new URLSearchParams();
       params.append(`new${fieldName.charAt(0).toUpperCase() + fieldName.slice(1)}`, newValue); // Capitalize the fieldName
       params.append('email', responseData.email);
-  
+
       const response = await fetch(`http://localhost:8081/api/user/update${fieldName}`, {
         method: 'POST',
         headers: {
@@ -49,13 +44,17 @@ const UserProfile = () => {
         },
         body: params,
       });
-  
+
       if (!response.ok) {
         throw new Error('Network response was not ok');
       }
-  
+
       const updatedUser = await response.json();
-      setResponseData(updatedUser); // Update the state with the updated user data
+      if (updatedUser.status === 200) {
+        setResponseData(updatedUser.data); // Update the state with the updated user data
+      } else {
+        console.error(updatedUser.message);
+      }
     } catch (error) {
       console.error('Error updating user data:', error);
     }
@@ -65,13 +64,13 @@ const UserProfile = () => {
     return <p>Loading...</p>;
   }
 
-  if(!data.isLoggedIn){
-    return <PleaseSignIn/>;
+  if (!data.isLoggedIn) {
+    return <PleaseSignIn />;
   }
 
-  // if (error) {
-  //   return <PleaseSignIn/>;
-  // }
+  if (!responseData) {
+    return <p>No user data available</p>;
+  }
 
   return (
     <div className="outer-container-1">
@@ -81,7 +80,7 @@ const UserProfile = () => {
           <thead>
             <tr>
               <th>Username</th>
-              <th>Name</th>
+              <th>Full Name</th>
               <th>Email</th>
               <th>Mobile Number</th>
               <th>Actions</th>
@@ -89,10 +88,10 @@ const UserProfile = () => {
           </thead>
           <tbody>
             <tr key={responseData.email}>
-              <td>{responseData.userName}</td>
-              <td>{responseData.name}</td>
-              <td>{responseData.email}</td>
-              <td>{responseData.mobileNumber}</td>
+              <td>{responseData.userName || 'N/A'}</td>
+              <td>{`${responseData.firstName || 'N/A'} ${responseData.lastName || 'N/A'}`}</td>
+              <td>{responseData.email || 'N/A'}</td>
+              <td>{responseData.mobileNumber || 'N/A'}</td>
               <td>
                 <div className="user-profile-action-buttons">
                   <ChangeFieldButton

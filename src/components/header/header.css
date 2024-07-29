@@ -1,5 +1,6 @@
 .header-main-div {
-    height: 80px;
+    height: 10vh;
+    min-height: 30px;
     width: 100vw;
     display: flex;
     justify-content: left;

@@ -1,169 +1,115 @@
-import React, { useState, useContext } from 'react';
-import { useNavigate, Link } from 'react-router-dom';
-import AuthContext from '../../context/authContext/AuthContext';
-import './signUp.css';
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
+// import './SignUp.css'
 
+const SignUp = () => {
+    const [email, setEmail] = useState('');
+    const [otp, setOtp] = useState('');
+    const [showOtpInput, setShowOtpInput] = useState(false);
+    const [message, setMessage] = useState('');
 
-const SignupPage = () => {
-  const navigate = useNavigate();
-  const [userDto, setUserDto] = useState({
-    userName: '',
-    firstName: '',
-    lastName: '',
-    mobileNumber: '',
-    email: '',
-    password: '',
-  });
+    // State to hold additional information
+    const [deviceInfo, setDeviceInfo] = useState({
+        ipAddress: '',
+        userAgent: navigator.userAgent,
+        platform: navigator.platform,
+        language: navigator.language,
+        deviceType: '',
+        osName: '',
+        osVersion: '',
+        browserName: '',
+        browserVersion: '',
+        deviceId: '',
+        screenResolution: `${window.screen.width}x${window.screen.height}`,
+        hardwareInfo: '',
+        networkType: ''
+    });
 
-  const { data, updateData } = useContext(AuthContext);
-  const [errorMessage, setErrorMessage] = useState(null);
-  const [successMessage, setSuccessMessage] = useState(null);
+    useEffect(() => {
+        // Function to detect device type and other info (mocked for simplicity)
+        const detectDeviceInfo = () => {
+            const userAgent = navigator.userAgent;
+            let deviceType = 'unknown';
+            if (/mobile/i.test(userAgent)) {
+                deviceType = 'mobile';
+            } else if (/tablet/i.test(userAgent)) {
+                deviceType = 'tablet';
+            } else {
+                deviceType = 'desktop';
+            }
+            setDeviceInfo(prev => ({
+                ...prev,
+                deviceType,
+                osName: navigator.platform,
+                browserName: userAgent.split(' ')[0] // Simplified browser name detection
+            }));
+        };
 
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setUserDto((prevUserDto) => ({
-      ...prevUserDto,
-      [name]: value,
-    }));
-  };
+        detectDeviceInfo();
+    }, []);
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
+    const handleSendOtp = async () => {
+        const requestPayload = {
+            email,
+            ...deviceInfo
+        };
 
-    // Reset messages
-    setErrorMessage(null);
-    setSuccessMessage(null);
+        try {
+            const response = await axios.post('http://localhost:9020/api/register/verify/email', requestPayload);
+            const responseMessage = response.data.message || 'OTP sent to ' + email;
+            setMessage(responseMessage);
 
-    // Call the registration API
-    fetch('http://localhost:8081/api/user/register', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(userDto),
-    })
-      .then((response) => {
-        if (response.ok) {
-          setSuccessMessage('User registered successfully!');
-          updateData(userDto.userName, userDto.password, userDto.email, true);
-          navigate('/');
-        } else {
-          return response.text();
+            if (response.data.status === 'OK') {
+                setShowOtpInput(true);
+            }
+        } catch (error) {
+            setMessage('Failed to send OTP, please try again.');
         }
-      })
-      .then((errorText) => {
-        setErrorMessage(errorText);
-      })
-      .catch((error) => {
-        console.error('Error registering user:', error);
-        setErrorMessage('Error registering user');
-      });
-  };
+    };
 
-  return (
-    <div className='signup-outer-container'>
-        <div className='signup-div'>
-        <div className='signup-heading-div'><h2 className='signup-heading'>Register</h2></div>
-        <form className='singup-form' onSubmit={handleSubmit}>
-          <div className='signup-input-div'>
-            <label htmlFor="password">Email</label>
-            <div className="signup-form-input">
-            <input
-              placeholder="username@gmail.com"
-              type="email" 
-              name="email" 
-              value={userDto.email} 
-              onChange={handleChange} 
-              required
-            />
-            </div>
-          </div>
-          <div className='signup-input-div'>
-          <label htmlFor="firstname">First Name</label>
-            <div className="signup-form-input">
-            <input
-                placeholder="Yash" 
-                type="text" 
-                name="firstName" 
-                value={userDto.firstName} 
-                onChange={handleChange} 
-                required />
-            </div>
-          </div>
-          <div className='signup-input-div'>
-          <label htmlFor="lastname">Last Name</label>
-            <div className="signup-form-input">
-            <input
-              placeholder="Carpenter"
-              type="text" 
-              name="lastName" 
-              value={userDto.lastName} 
-              onChange={handleChange} 
-              required
-            />
-            </div>
-          </div>
-          <div className='signup-input-div'>
-          <label htmlFor="password">Mobile Number</label>
-            <div className="signup-form-input">
-            <input
-              placeholder="Mobile Number"
-              type="text" 
-              name="mobileNumber" 
-              value={userDto.mobileNumber} 
-              onChange={handleChange} 
-              required 
-            />
-            </div>
-          </div>
-          <div className='signup-input-div'>
-          <label htmlFor="email">Username</label>
-            <div className="signup-form-input">
+    const handleVerifyOtp = async () => {
+        try {
+            const response = await axios.post('http://localhost:9020/api/verify-otp', { email, otp });
+            if (response.data.status === 'VERIFIED') {
+                window.location.href = '/next-page'; // Redirect to the next page
+            } else {
+                setMessage(response.data.message);
+            }
+        } catch (error) {
+            setMessage('Failed to verify OTP, please try again.');
+        }
+    };
+
+    return (
+        <div className="container">
+            <h1>Email Verification</h1>
+            <div className="form-group">
                 <input
-                placeholder="yashcarpenter" 
-                type="text" 
-                name="userName" 
-                value={userDto.userName} 
-                onChange={handleChange} 
-                required />
+                    type="email"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    placeholder="Enter your email"
+                    className="input-field"
+                />
+                <button onClick={handleSendOtp} className="btn btn-primary">Verify</button>
             </div>
-          </div>
-          <div className='signup-input-div'>
-          <label htmlFor="password">Password</label>
-            <div className="signup-form-input">
-            <input
-              placeholder="············"
-              type="password" 
-              name="password" 
-              value={userDto.password} 
-              onChange={handleChange} 
-              required
-            />
-            </div>
-          </div>
-          <div className='signup-submit-div'>
-          <button className="signup-submit-button" type="submit">Regsiter</button>
-          </div>
-          <div className='signup-signin-div'>
-            <Link to="/signin">
-              <button className='signup-signin-button'>Login</button>
-            </Link>
-          </div>
-        </form>
-        {errorMessage && <p className="error-message" style={styles.errorMessage}>{errorMessage}</p>}
-        {successMessage && <p className="success-message" style={styles.successMessage}>{successMessage}</p>}
+
+            {showOtpInput && (
+                <div className="form-group otp-container">
+                    <input
+                        type="text"
+                        value={otp}
+                        onChange={(e) => setOtp(e.target.value)}
+                        placeholder="Enter OTP"
+                        className="input-field"
+                    />
+                    <button onClick={handleVerifyOtp} className="btn btn-primary">Submit OTP</button>
+                </div>
+            )}
+
+            {message && <p className="message">{message}</p>}
         </div>
-    </div>
-  );
+    );
 };
 
-const styles = {
-  errorMessage: {
-    color: '#d9534f',
-  },
-  successMessage: {
-    color: '#5cb85c',
-  },
-};
-
-export default SignupPage;
+export default SignUp;

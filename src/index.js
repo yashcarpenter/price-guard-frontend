@@ -16,7 +16,8 @@ import ProductList from './components/ProductList';
 import UserProfile from './components/userProfile/UserProfile';
 import PriceChart from './components/priceChart/PriceChart';
 import SignIn from './components/signIn/SignIn';
-import SignupPage from './components/signUp/SignUp';
+import EnterUserDetailPage from './components/enterUserDetail/EnterUserDetailPage';
+import SignUp from './components/signUp/SignUp';
 
 const router = createBrowserRouter([
   {
@@ -45,11 +46,14 @@ const router = createBrowserRouter([
         path: "/userprofile",
         element: <UserProfile/>,
       },{
-        path: "/signup",
-        element: <SignupPage/>,
+        path: "/enteruserdetail",
+        element: <EnterUserDetailPage/>,
       },{
         path: "/graph",
         element: <PriceChart/>,
+      },{
+        path: "/signup",
+        element: <SignUp/>,
       }
     ],
   },

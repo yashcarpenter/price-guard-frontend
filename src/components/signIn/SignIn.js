@@ -51,7 +51,7 @@ const SignIn = () => {
           <label htmlFor="email">Email Address</label>
             <div className="sec-2">
                 <input
-                placeholder="Username@gmail.com" 
+                placeholder="Enter your email" 
                 type="email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}

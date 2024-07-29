@@ -45,13 +45,13 @@ function Header() {
         </Container>
       </Navbar>
       </div>
-      {/* <div className='header-login-logout-div'>
+      <div className='header-login-logout-div'>
         {data.isLoggedIn? (
-          <button onClick={handleSignOut} style={styles.signout}>Log Out</button>
+          <button onClick={handleSignOut} style={styles.signout}>Logout</button>
           ) : (
               <button onClick={handleSignIn} style={styles.signout}>Login</button>
         )}
-      </div> */}
+      </div>
     </div>
   );
 }

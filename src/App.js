@@ -11,7 +11,7 @@ function App() {
       <Header/>
       {/* <Header2/> */}
       <Outlet/>
-      <Footer/>
+      {/* <Footer/> */}
     </AuthDataContext>
     </>
   );
