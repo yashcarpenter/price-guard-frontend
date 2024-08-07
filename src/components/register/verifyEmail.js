@@ -82,7 +82,9 @@ const VerifyEmail = () => {
 
     return (
         <div className='verify-email-outer-container'>
+            <div className='verify-email-inner-container'>
 
+            </div>
         </div>
     );
 };

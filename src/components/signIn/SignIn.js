@@ -72,7 +72,7 @@ const SignIn = () => {
           </div>
           <button className="signin-submit-button" type="submit">Login</button>
           <div className='signin-signup-div'>
-            <Link to="/signup">
+            <Link to="/verifyEmail">
               <button className='signin-signup-button'>Register</button>
             </Link>
           </div>
