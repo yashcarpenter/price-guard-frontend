@@ -17,7 +17,7 @@ import UserProfile from './components/userProfile/UserProfile';
 import PriceChart from './components/priceChart/PriceChart';
 import SignIn from './components/signIn/SignIn';
 import EnterUserDetailPage from './components/enterUserDetail/EnterUserDetailPage';
-import SignUp from './components/signUp/SignUp';
+import VerifyEmail from './components/register/verifyEmail';
 
 const router = createBrowserRouter([
   {
@@ -52,8 +52,8 @@ const router = createBrowserRouter([
         path: "/graph",
         element: <PriceChart/>,
       },{
-        path: "/signup",
-        element: <SignUp/>,
+        path: "/verifyEmail",
+        element: <VerifyEmail/>,
       }
     ],
   },

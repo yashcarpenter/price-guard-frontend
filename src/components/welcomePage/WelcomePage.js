@@ -28,7 +28,7 @@ function WelcomePage() {
             </Link>
             </div>
             <div>
-            <Link to="/signup">
+            <Link to="/verifyEmail">
               <button className="welcomepage-signup-button">Register</button>
             </Link>
             </div>

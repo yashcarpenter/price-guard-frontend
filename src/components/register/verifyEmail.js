@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-// import './SignUp.css'
+import './verifyEmail.css';
 
-const SignUp = () => {
+const VerifyEmail = () => {
     const [email, setEmail] = useState('');
     const [otp, setOtp] = useState('');
     const [showOtpInput, setShowOtpInput] = useState(false);
@@ -81,35 +81,10 @@ const SignUp = () => {
     };
 
     return (
-        <div className="container">
-            <h1>Email Verification</h1>
-            <div className="form-group">
-                <input
-                    type="email"
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                    placeholder="Enter your email"
-                    className="input-field"
-                />
-                <button onClick={handleSendOtp} className="btn btn-primary">Verify</button>
-            </div>
+        <div className='verify-email-outer-container'>
 
-            {showOtpInput && (
-                <div className="form-group otp-container">
-                    <input
-                        type="text"
-                        value={otp}
-                        onChange={(e) => setOtp(e.target.value)}
-                        placeholder="Enter OTP"
-                        className="input-field"
-                    />
-                    <button onClick={handleVerifyOtp} className="btn btn-primary">Submit OTP</button>
-                </div>
-            )}
-
-            {message && <p className="message">{message}</p>}
         </div>
     );
 };
 
-export default SignUp;
+export default VerifyEmail;

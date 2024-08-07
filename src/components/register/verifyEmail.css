@@ -1,6 +1,14 @@
 /* EmailVerification.css */
 
-.container {
+.verify-email-outer-container {
+    width: 100vw;
+    height: 80vh;
+    display: grid;
+    justify-content: center;
+    align-items: center;
+}
+
+.verify-email-container {
     max-width: 500px;
     margin: 0 auto;
     padding: 20px;
