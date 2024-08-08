@@ -1,12 +1,16 @@
 import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import './verifyEmail.css';
+import image from '../../resources/verify-email-image.png';
 
 const VerifyEmail = () => {
+    const navigate = useNavigate();
+    const [sentOTP, setSentOtp] = useState(false);
     const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
     const [otp, setOtp] = useState('');
-    const [showOtpInput, setShowOtpInput] = useState(false);
-    const [message, setMessage] = useState('');
+    const [error, setError] = useState('');
 
     // State to hold additional information
     const [deviceInfo, setDeviceInfo] = useState({
@@ -53,37 +57,92 @@ const VerifyEmail = () => {
             email,
             ...deviceInfo
         };
-
         try {
-            const response = await axios.post('http://localhost:9020/api/register/verify/email', requestPayload);
-            const responseMessage = response.data.message || 'OTP sent to ' + email;
-            setMessage(responseMessage);
-
-            if (response.data.status === 'OK') {
-                setShowOtpInput(true);
+            const response = await axios.post('http://localhost:8081/api/register/verify/email', requestPayload);
+            if(response.status === 200){
+                setSentOtp(true);
+                console.log("Otp sent successfully");
+            } else{
+                setError(response.data.data);
             }
         } catch (error) {
-            setMessage('Failed to send OTP, please try again.');
+            console.error(error);
         }
     };
 
     const handleVerifyOtp = async () => {
+        const verifyEmailOtpDto = {
+            email,
+            password,
+            otp
+        };
         try {
-            const response = await axios.post('http://localhost:9020/api/verify-otp', { email, otp });
-            if (response.data.status === 'VERIFIED') {
-                window.location.href = '/next-page'; // Redirect to the next page
+            const response = await axios.post('http://localhost:8081/api/register/verify/email/otp', verifyEmailOtpDto);
+            if (response.status === 200 && response.data.data === 'VERIFIED') {
+                navigate('/');
             } else {
-                setMessage(response.data.message);
+                alert('OTP verification failed. Please try again.');
             }
         } catch (error) {
-            setMessage('Failed to verify OTP, please try again.');
+            console.error(error);
         }
     };
 
     return (
-        <div className='verify-email-outer-container'>
-            <div className='verify-email-inner-container'>
-
+        <div className='verify-email-page-container'>
+            <div className='verify-email-box-container'>
+                {!sentOTP ? (
+                    <div className='verify-email-inner-container'>
+                        <div className='verify-email-header-outer-container'>
+                            <div className='verify-email-header-inner-container'>
+                                <div className='verify-email-header-image-container'><img src={image} className='verify-email-image'/></div>
+                                <h2>Verify Email</h2>
+                            </div>
+                        </div>
+                        <div className='verify-email-input-container'>
+                            <input
+                                placeholder="Enter your email" 
+                                value={email}
+                                onChange={(e) => setEmail(e.target.value)}
+                                required
+                            />
+                            <input 
+                                type='password'
+                                placeholder="Enter password" 
+                                value={password}
+                                onChange={(e) => setPassword(e.target.value)}
+                                required
+                            />
+                            <input 
+                                type='password'
+                                placeholder="Confirm password" 
+                                value={password}
+                                onChange={(e) => setPassword(e.target.value)}
+                                required
+                            />
+                            <p>{Error}</p>
+                            <button onClick={handleSendOtp}>Send OTP</button>
+                        </div>
+                    </div>
+                ) : (
+                    <div className='verify-email-inner-container'>
+                        <div className='verify-email-header-outer-container'>
+                            <div className='verify-email-header-inner-container'>
+                                <div className='verify-email-header-image-container'><img src={image} className='verify-email-image'/></div>
+                                <h2>Verify Email</h2>
+                            </div>
+                        </div>
+                        <div className='verify-email-input-container'>
+                            <input 
+                                placeholder="Enter OTP" 
+                                value={otp}
+                                onChange={(e) => setOtp(e.target.value)}
+                                required
+                            />
+                            <button onClick={handleVerifyOtp}>Verify</button>
+                        </div>
+                    </div>
+                )}
             </div>
         </div>
     );

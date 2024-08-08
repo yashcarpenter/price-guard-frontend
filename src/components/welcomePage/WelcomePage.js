@@ -1,5 +1,3 @@
-// WelcomePage.js
-
 import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import AuthContext from '../../context/authContext/AuthContext';
@@ -52,7 +50,7 @@ function WelcomePage() {
         <p >
           Welcome to Price Guard Discover a smarter way to shop online with Price
           Guard. We're here to make your online shopping experience more
-          rewarding. About Us At Price Guard, our mission is simple: to help you
+          rewarding. At Price Guard, our mission is simple: to help you
           save money on your favorite products. We believe that everyone deserves
           the best deals, and our platform is designed to make that happen. What
           We Offer Price Monitoring: Keep track of your favorite products and

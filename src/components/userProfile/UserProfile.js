@@ -6,11 +6,14 @@ import { useNavigate } from 'react-router-dom';
 
 const UserProfile = () => {
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
   const [responseData, setResponseData] = useState(null);
   const navigate = useNavigate();
 
   const { data, updateData } = useContext(AuthContext);
+
+  if(!data.isLoggedIn){
+    navigate('/');
+  }
 
   useEffect(() => {
     fetch(`http://localhost:8081/api/user/getdetail/${data.email}`)
@@ -26,7 +29,6 @@ const UserProfile = () => {
       })
       .catch(error => {
         console.error('Error fetching data:', error);
-        setError(error.message);
         setLoading(false);
       });
   }, [data.email, navigate]);

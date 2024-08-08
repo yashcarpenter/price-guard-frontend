@@ -64,7 +64,8 @@ const styles = {
     alignItems: 'center',
   },
   logoImage: {
-    width: '10vh',
+    height: '8vh',
+    minHeight: '50px',
     marginLeft: '10vw',
   },
   signout: {
