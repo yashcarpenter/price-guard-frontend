@@ -10,9 +10,8 @@ const AddProduct = ({ onSubmit = () => {} }) => {
   const [productName, setProductName] = useState('');
   const [productASIN, setProductASIN] = useState('');
   const [limitPrice, setLimitPrice] = useState('');
-  const [userEmail, setUserEmail] = useState('');
 
-  const { data, updateData } = useContext(AuthContext);
+  const { data } = useContext(AuthContext);
 
   if(!data.isLoggedIn){
     return <PleaseSignIn/>;
